@@ -74,6 +74,10 @@ a:focus-visible {
 }
 .uitslag-goed { color: #14532d; }
 .uitslag-fout { color: #7f1d1d; }
+/* Meerkeuze na nakijken: gekozen goed antwoord groen en vet, gekozen fout antwoord rood en rustig */
+.answers label.optie-goed, .answers label.optie-goed:has(input:checked) { color: #14532d; font-weight: 700; background-color: #E6F4EA; border-radius: 4px; }
+.answers label.optie-fout, .answers label.optie-fout:has(input:checked) { color: #7f1d1d; font-weight: 400; text-decoration: line-through; text-decoration-thickness: 1px; background-color: #FBEDED; border-radius: 4px; }
+.uitslag-fout { font-weight: 400; }
 .in-ontwikkeling {
   background-color: #FFF4CE;
   color: #111111;

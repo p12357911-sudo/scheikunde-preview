@@ -212,12 +212,13 @@ klaar(function () {
       var antwoorden = blokken[i].querySelector('.answers');
       var gekozen = antwoorden.querySelector('input:checked');
       var juist = gekozen && vragen[i].opties[letters.indexOf(gekozen.value)].goed;
-      if (juist) {
-        goed++;
-        antwoorden.style.color = '#14532d';
-      } else {
-        antwoorden.style.color = '#7f1d1d';
-      }
+      /* Alleen het gekozen antwoord krijgt een kleur: goed = groen en vet, fout = rood en rustig.
+         Het juiste antwoord wordt bij een fout niet verklapt, zodat een tweede ronde mogelijk blijft. */
+      Array.prototype.forEach.call(antwoorden.querySelectorAll('label'), function (l) {
+        l.classList.remove('optie-goed', 'optie-fout');
+      });
+      if (gekozen) { gekozen.parentNode.classList.add(juist ? 'optie-goed' : 'optie-fout'); }
+      if (juist) { goed++; }
       markeer(antwoorden, !!juist);
     }
     uitslag.innerHTML = goed + ' van de ' + aantal + ' goed';
