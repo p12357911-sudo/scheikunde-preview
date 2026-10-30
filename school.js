@@ -222,7 +222,7 @@ function kbIsGetalMetEenheid(verwacht, v) {
 function kbBeoordeel(ingevuld, verwacht) {
   var v = kbGetal(verwacht);
   if (kbIsGetalMetEenheid(verwacht, v)) {
-    var i = kbGetal(ingevuld);
+    var i = kbGetal(String(ingevuld).replace(/^\s*[A-Za-z\u0370-\u03ff][A-Za-z0-9_]{0,3}\s*=\s*/, ''));
     if (i && i.getal === v.getal && (i.eenheid === '' || v.eenheid === '' || i.eenheid.replace(/x/g, '') === v.eenheid.replace(/x/g, ''))) { return { oordeel: 'goed', hint: '', numeriek: true }; }
     if (i && i.getal === v.getal) { return { oordeel: 'half', hint: 'De waarde klopt, controleer de eenheid.', numeriek: true }; }
     if (i && i.getal !== v.getal && Math.abs(kbWaarde(i.getal) - kbWaarde(v.getal)) < 1e-12 * Math.max(1, Math.abs(kbWaarde(v.getal))) && v.getal.indexOf('/') === -1) {

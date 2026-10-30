@@ -5,7 +5,7 @@
    Daarna werkt de zwevende knop "Controleer antwoorden" (school.js) met AI:
      1. school.js kijkt eerst alles lokaal na (precies/ruimhartig, getallen met afronding en eenheid).
      2. Antwoorden die lokaal niet te beoordelen zijn (eigen woorden: "Vergelijk zelf") of die lokaal fout zijn
-        terwijl het antwoord een tekst is die half goed kan zijn, gaan samen in EEN verzoek naar de Worker
+        (woordkeuze, spelfout of half antwoord), gaan samen in EEN verzoek naar de Worker
         (een verzoek = een AI-aanroep, dat spaart de gratis dagelijkse limiet).
      3. De uitslag is goed, bijna goed of niet goed, met een korte tip. Bij "bijna goed" of "niet goed" blijft het juiste
         antwoord dicht bij de eerste poging; de leerling mag het aanpassen en opnieuw controleren. Na de tweede poging of
@@ -39,12 +39,10 @@
       if (verzoeken >= MAX_VERZOEKEN) { return false; }
       if (!it || it.local === 'goed' || it.local === 'half') { return false; }
       if (it.numeriek) { return false; }                 /* getallen en eenheden kijkt school.js zelf na */
-      var tekst = String(it.ingevuld || '');
-      if (tekst.length > 500 || !/[a-z\u00e0-\u00ff]{2}/i.test(tekst)) { return false; }
-      if (it.local === 'zelf') { return true; }          /* lokaal niet te beoordelen */
-      /* lokaal fout: alleen bij langere tekstantwoorden, want korte (een naam of symbool) is goed of fout */
-      var v = String(it.verwacht || '');
-      return it.local === 'fout' && (v.length >= 12 || v.indexOf('=') !== -1) && tekst.length >= 3;
+      var tekst = String(it.ingevuld || '').trim();
+      if (tekst.length < 2 || tekst.length > 500 || !/[a-z\u00e0-\u00ff\u0370-\u03ff]/i.test(tekst)) { return false; }
+      /* lokaal niet te beoordelen, of lokaal fout: een synoniem, spelfout of half antwoord kan nog goed of bijna goed zijn */
+      return it.local === 'zelf' || it.local === 'fout';
     },
 
     /* items = [{id, question, modelAnswer, studentAnswer, attempt}] -> Promise met { id: {verdict, tip} } */
@@ -88,7 +86,7 @@
     if (intro) { intro.hidden = false; return; }
     intro = document.createElement('p');
     intro.id = 'ai-intro';
-    intro.textContent = 'Typ je antwoorden en klik op "Controleer antwoorden". Antwoorden in je eigen woorden worden met AI nagekeken: je krijgt dan een tip en mag het nog een keer proberen. Typ nooit je naam of andere persoonlijke gegevens: je antwoord wordt door Google Gemini nagekeken.';
+    intro.textContent = 'Typ je antwoorden en klik op "Controleer antwoorden". Antwoorden in je eigen woorden worden met AI nagekeken: je krijgt dan een tip en mag het nog een keer proberen. Typ nooit je naam of andere persoonlijke gegevens: je antwoord wordt door een AI-dienst nagekeken.';
     var eerste = vraagKnoppen[0].parentNode;
     eerste.parentNode.insertBefore(intro, eerste);
   });
