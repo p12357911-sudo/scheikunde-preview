@@ -418,4 +418,4 @@ table { max-width: 100%; }
 .rekenregel { margin-top: 8px; font-weight: bold; }
 
 /* Rekenvaardigheden: korte uitwerking onder het antwoord */
-.antwoord-box .uitleg { font-size: 0.9em; color: #333333; margin-top: 0; }
+.antwoord-box .uitleg { font-size: 10pt; color: #111111; margin-top: 0; }
