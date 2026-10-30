@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<title>Stapelopdrachten - 123 school</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="123school.css">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<!-- Navbar -->
+<div w3-include-html="navbar.html"></div>
+</br>
+
+<!-- Accordion Knowledge Bank -->
+<div class="w3-container">
+
+<h2>Stapelopdrachten</h2>
+<p>Test je kennis door je antwoord in te typen en te vergelijken met het juiste antwoord, door te klikken op de vraag.</p>
+<p>Bij een stapelopdracht heb je meerdere stappen nodig om bij het antwoord te komen. In de tip staat hoeveel stappen je nodig hebt. Rond pas aan het eind af.</p>
+
+<div>
+  <button onclick='myFunction("Demo1", this)' class='vraag-knop'> Een oplossing heeft een concentratie van 12,5 g/L. Hoeveel gram opgeloste stof zit er in 250 mL van deze oplossing? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een oplossing heeft een concentratie van 12,5 g/L. Hoeveel gram opgeloste stof zit er in 250 mL van deze oplossing? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo1" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 250 mL = 0,25 L. Stap 2: 12,5 g/L × 0,25 L = 3,125 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo2", this)' class='vraag-knop'> Een oplossing heeft een concentratie van 0,80 g/L. Hoeveel gram opgeloste stof zit er in 250 mL van deze oplossing? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een oplossing heeft een concentratie van 0,80 g/L. Hoeveel gram opgeloste stof zit er in 250 mL van deze oplossing? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo2" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 250 mL = 0,25 L. Stap 2: 0,80 g/L × 0,25 L = 0,2 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo3", this)' class='vraag-knop'> Een vloeistof (ethanol) heeft een dichtheid van 0,79 g/mL. Wat is de massa in kg van 350 mL van deze vloeistof? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een vloeistof (ethanol) heeft een dichtheid van 0,79 g/mL. Wat is de massa in kg van 350 mL van deze vloeistof? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo3" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 0,79 g/mL × 350 mL = 276,5 g. Stap 2: 276,5 g = 0,2765 kg</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo4", this)' class='vraag-knop'> Een vloeistof heeft een dichtheid van 0,92 g/mL. Wat is het volume in L van 150 g van deze vloeistof? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een vloeistof heeft een dichtheid van 0,92 g/mL. Wat is het volume in L van 150 g van deze vloeistof? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo4" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 150 g : 0,92 g/mL = 163,04 mL. Stap 2: 163,04 mL = 0,16304 L</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo5", this)' class='vraag-knop'> Je hebt 45 mL ethanol met een dichtheid van 0,79 g/mL. De molaire massa is 46,0 g/mol. Hoeveel mol ethanol is dat? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je hebt 45 mL ethanol met een dichtheid van 0,79 g/mL. De molaire massa is 46,0 g/mol. Hoeveel mol ethanol is dat? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo5" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 0,79 g/mL × 45 mL = 35,55 g. Stap 2: 35,55 g : 46,0 g/mol = 0,77283 mol</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo6", this)' class='vraag-knop'> Je hebt 25,0 mL ethanol met een dichtheid van 0,79 g/mL. De molaire massa is 46,0 g/mol. Hoeveel mol ethanol is dat? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je hebt 25,0 mL ethanol met een dichtheid van 0,79 g/mL. De molaire massa is 46,0 g/mol. Hoeveel mol ethanol is dat? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo6" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 0,79 g/mL × 25,0 mL = 19,75 g. Stap 2: 19,75 g : 46,0 g/mol = 0,42935 mol</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo7", this)' class='vraag-knop'> Je hebt 0,50 mol ethanol. De molaire massa is 46,0 g/mol en de dichtheid is 0,79 g/mL. Welk volume in mL heeft deze hoeveelheid? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je hebt 0,50 mol ethanol. De molaire massa is 46,0 g/mol en de dichtheid is 0,79 g/mL. Welk volume in mL heeft deze hoeveelheid? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo7" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 0,50 mol × 46,0 g/mol = 23 g. Stap 2: 23 g : 0,79 g/mL = 29,114 mL</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo8", this)' class='vraag-knop'> Je hebt 2,50 mol van een stof met een molaire massa van 44,0 g/mol. Hoeveel kg is dat? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je hebt 2,50 mol van een stof met een molaire massa van 44,0 g/mol. Hoeveel kg is dat? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo8" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 2,50 mol × 44,0 g/mol = 110 g. Stap 2: 110 g = 0,11 kg</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo9", this)' class='vraag-knop'> Je hebt 250 mL oplossing met een concentratie van 0,200 mol/L. Hoeveel mol opgeloste stof zit erin? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je hebt 250 mL oplossing met een concentratie van 0,200 mol/L. Hoeveel mol opgeloste stof zit erin? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo9" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 250 mL = 0,25 L. Stap 2: 0,200 mol/L × 0,25 L = 0,05 mol</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo10", this)' class='vraag-knop'> Hoeveel mL oplossing is nodig om 0,150 mol op te lossen als de concentratie 0,500 mol/L moet zijn? Rond af op 3 significante cijfers. Schrijf het antwoord in wetenschappelijke notatie. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoeveel mL oplossing is nodig om 0,150 mol op te lossen als de concentratie 0,500 mol/L moet zijn? Rond af op 3 significante cijfers. Schrijf het antwoord in wetenschappelijke notatie. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo10" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 0,150 mol : 0,500 mol/L = 0,3 L. Stap 2: 0,3 L = 300 mL</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo11", this)' class='vraag-knop'> Je lost natriumhydroxide af in water tot 250 mL oplossing met een concentratie van 0,200 mol/L. De molaire massa van natriumhydroxide is 40,0 g/mol. Hoeveel gram natriumhydroxide heb je nodig? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je lost natriumhydroxide af in water tot 250 mL oplossing met een concentratie van 0,200 mol/L. De molaire massa van natriumhydroxide is 40,0 g/mol. Hoeveel gram natriumhydroxide heb je nodig? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo11" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 250 mL = 0,25 L. Stap 2: 0,200 mol/L × 0,25 L = 0,05 mol. Stap 3: 0,05 mol × 40,0 g/mol = 2 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo12", this)' class='vraag-knop'> Je lost natriumchloride af in water tot 450 mL oplossing met een concentratie van 0,150 mol/L. De molaire massa van natriumchloride is 58,5 g/mol. Hoeveel gram natriumchloride heb je nodig? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je lost natriumchloride af in water tot 450 mL oplossing met een concentratie van 0,150 mol/L. De molaire massa van natriumchloride is 58,5 g/mol. Hoeveel gram natriumchloride heb je nodig? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo12" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 450 mL = 0,45 L. Stap 2: 0,150 mol/L × 0,45 L = 0,0675 mol. Stap 3: 0,0675 mol × 58,5 g/mol = 3,94875 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo13", this)' class='vraag-knop'> Je lost 5,85 g natriumchloride (molaire massa 58,5 g/mol) op in water tot 250 mL oplossing. Wat is de concentratie in mol/L? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je lost 5,85 g natriumchloride (molaire massa 58,5 g/mol) op in water tot 250 mL oplossing. Wat is de concentratie in mol/L? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo13" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 5,85 g : 58,5 g/mol = 0,1 mol. Stap 2: 250 mL = 0,25 L. Stap 3: 0,1 mol : 0,25 L = 0,4 mol/L</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo14", this)' class='vraag-knop'> Een oplossing van 250 g bevat 12 massaprocent natriumchloride. De molaire massa van natriumchloride is 58,5 g/mol. Hoeveel mol natriumchloride zit er in de oplossing? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een oplossing van 250 g bevat 12 massaprocent natriumchloride. De molaire massa van natriumchloride is 58,5 g/mol. Hoeveel mol natriumchloride zit er in de oplossing? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo14" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 12% van 250 g = 30 g natriumchloride. Stap 2: 30 g : 58,5 g/mol = 0,51282 mol</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo15", this)' class='vraag-knop'> Een fietser legt 18 km af in 45 minuten. Wat is de gemiddelde snelheid in km/h? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een fietser legt 18 km af in 45 minuten. Wat is de gemiddelde snelheid in km/h? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo15" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 45 min = 0,75 h. Stap 2: 18 km : 0,75 h = 24 km/h</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo16", this)' class='vraag-knop'> Een lamp van 75 W brandt 4,0 uur. Hoeveel kWh energie gebruikt de lamp? (1 kW = 1000 W) Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een lamp van 75 W brandt 4,0 uur. Hoeveel kWh energie gebruikt de lamp? (1 kW = 1000 W) Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo16" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 75 W = 0,075 kW. Stap 2: 0,075 kW × 4,0 h = 0,3 kWh</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo17", this)' class='vraag-knop'> Je hebt 12,0 g CO<sub>2</sub> (molaire massa 44,0 g/mol). Het molair volume van een gas is 24,5 L/mol. Welk volume in L heeft dit gas? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je hebt 12,0 g CO2 (molaire massa 44,0 g/mol). Het molair volume van een gas is 24,5 L/mol. Welk volume in L heeft dit gas? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo17" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 12,0 g : 44,0 g/mol = 0,27273 mol. Stap 2: 0,27273 mol × 24,5 L/mol = 6,6818 L</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo18", this)' class='vraag-knop'> Een gas (CO<sub>2</sub>, molaire massa 44,0 g/mol) heeft een volume van 2,45 L. Het molair volume is 24,5 L/mol. Wat is de massa van het gas in gram? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een gas (CO2, molaire massa 44,0 g/mol) heeft een volume van 2,45 L. Het molair volume is 24,5 L/mol. Wat is de massa van het gas in gram? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo18" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 2,45 L : 24,5 L/mol = 0,1 mol. Stap 2: 0,1 mol × 44,0 g/mol = 4,4 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo19", this)' class='vraag-knop'> Een tablet bevat 585 mg van een stof met een molaire massa van 58,5 g/mol. Hoeveel mol van de stof zit er in het tablet? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een tablet bevat 585 mg van een stof met een molaire massa van 58,5 g/mol. Hoeveel mol van de stof zit er in het tablet? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo19" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 585 mg = 0,585 g. Stap 2: 0,585 g : 58,5 g/mol = 0,01 mol</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo20", this)' class='vraag-knop'> Van een stof heeft 32 mL een massa van 45 g. Wat is de massa van 28 mL van deze stof? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Van een stof heeft 32 mL een massa van 45 g. Wat is de massa van 28 mL van deze stof? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo20" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: dichtheid = 45 g : 32 mL = 1,40625 g/mL. Stap 2: 1,40625 g/mL × 28 mL = 39,375 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo21", this)' class='vraag-knop'> Je mengt 125 mL water (1,00 g/mL) met 45,0 mL ethanol (0,790 g/mL). Wat is de totale massa van het mengsel in gram? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je mengt 125 mL water (1,00 g/mL) met 45,0 mL ethanol (0,790 g/mL). Wat is de totale massa van het mengsel in gram? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo21" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 1,00 g/mL × 125 mL = 125 g water en 0,790 g/mL × 45,0 mL = 35,55 g ethanol. Stap 2: 125 g + 35,55 g = 160,55 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo22", this)' class='vraag-knop'> Je mengt 125 mL water (1,00 g/mL) met 45,0 mL ethanol (0,790 g/mL). Bereken het massapercentage water in het mengsel. Rond af op 3 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je mengt 125 mL water (1,00 g/mL) met 45,0 mL ethanol (0,790 g/mL). Bereken het massapercentage water in het mengsel. Rond af op 3 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo22" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: massa water = 125 g en massa ethanol = 35,55 g. Stap 2: totale massa = 160,55 g. Stap 3: 125 g : 160,55 g × 100% = 77,857%</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo23", this)' class='vraag-knop'> Bij de reactie 2 H<sub>2</sub> + O<sub>2</sub> → 2 H<sub>2</sub>O reageert 8,0 g O<sub>2</sub>. De molaire massa van O<sub>2</sub> is 32,0 g/mol en van H<sub>2</sub>O is 18,0 g/mol. Hoeveel gram H<sub>2</sub>O is er nodig of ontstaat er? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bij de reactie 2 H2 + O2 → 2 H2O reageert 8,0 g O2. De molaire massa van O2 is 32,0 g/mol en van H2O is 18,0 g/mol. Hoeveel gram H2O is er nodig of ontstaat er? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo23" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 8,0 g : 32,0 g/mol = 0,25 mol O<sub>2</sub>. Stap 2: molverhouding O<sub>2</sub> : H<sub>2</sub>O, dus 0,5 mol H<sub>2</sub>O. Stap 3: 0,5 mol × 18,0 g/mol = 9 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo24", this)' class='vraag-knop'> Bij de reactie 2 Mg + O<sub>2</sub> → 2 MgO reageert 3,20 g O<sub>2</sub>. De molaire massa van O<sub>2</sub> is 32,0 g/mol en van MgO is 40,3 g/mol. Hoeveel gram MgO is er nodig of ontstaat er? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bij de reactie 2 Mg + O2 → 2 MgO reageert 3,20 g O2. De molaire massa van O2 is 32,0 g/mol en van MgO is 40,3 g/mol. Hoeveel gram MgO is er nodig of ontstaat er? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo24" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 3,20 g : 32,0 g/mol = 0,1 mol O<sub>2</sub>. Stap 2: molverhouding O<sub>2</sub> : MgO, dus 0,2 mol MgO. Stap 3: 0,2 mol × 40,3 g/mol = 8,06 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo25", this)' class='vraag-knop'> Bij de reactie 4 Fe + 3 O<sub>2</sub> → 2 Fe<sub>2</sub>O<sub>3</sub> reageert 5,60 g Fe. De molaire massa van Fe is 55,8 g/mol en van Fe<sub>2</sub>O<sub>3</sub> is 159,6 g/mol. Hoeveel gram Fe<sub>2</sub>O<sub>3</sub> is er nodig of ontstaat er? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Bij de reactie 4 Fe + 3 O2 → 2 Fe2O3 reageert 5,60 g Fe. De molaire massa van Fe is 55,8 g/mol en van Fe2O3 is 159,6 g/mol. Hoeveel gram Fe2O3 is er nodig of ontstaat er? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo25" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 5,60 g : 55,8 g/mol = 0,10036 mol Fe. Stap 2: molverhouding Fe : Fe<sub>2</sub>O<sub>3</sub>, dus 0,050179 mol Fe<sub>2</sub>O<sub>3</sub>. Stap 3: 0,050179 mol × 159,6 g/mol = 8,0086 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo26", this)' class='vraag-knop'> Je titreert 25,0 mL HCl-oplossing met NaOH-oplossing van 0,100 mol/L. Je hebt 20,0 mL NaOH-oplossing nodig. HCl en NaOH reageren in de molverhouding 1 : 1. Wat is de concentratie van de HCl-oplossing in mol/L? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je titreert 25,0 mL HCl-oplossing met NaOH-oplossing van 0,100 mol/L. Je hebt 20,0 mL NaOH-oplossing nodig. HCl en NaOH reageren in de molverhouding 1 : 1. Wat is de concentratie van de HCl-oplossing in mol/L? Rond af op 3 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo26" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 20,0 mL = 0,02 L; 0,100 mol/L × 0,02 L = 0,002 mol NaOH. Stap 2: 1 : 1, dus 0,002 mol HCl. Stap 3: 0,002 mol : 0,025 L = 0,08 mol/L</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo27", this)' class='vraag-knop'> Je verdunt 25,0 mL oplossing van 2,00 mol/L met water tot 250 mL. Wat is de concentratie van de verdunde oplossing in mol/L? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je verdunt 25,0 mL oplossing van 2,00 mol/L met water tot 250 mL. Wat is de concentratie van de verdunde oplossing in mol/L? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo27" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: n = 2,00 mol/L × 0,025 L = 0,05 mol. Stap 2: 250 mL = 0,25 L. Stap 3: 0,05 mol : 0,25 L = 0,2 mol/L</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo28", this)' class='vraag-knop'> Hoeveel moleculen water zitten er in 18,0 g water? De molaire massa is 18,0 g/mol. Gebruik N<sub>A</sub> = 6,02·10<sup>23</sup> mol<sup>−1</sup>. Rond af op 3 significante cijfers. Schrijf het antwoord in wetenschappelijke notatie. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoeveel moleculen water zitten er in 18,0 g water? De molaire massa is 18,0 g/mol. Gebruik NA = 6,02·1023 mol−1. Rond af op 3 significante cijfers. Schrijf het antwoord in wetenschappelijke notatie. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo28" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 18,0 g : 18,0 g/mol = 1 mol. Stap 2: 1 mol × 6,02·10<sup>23</sup> mol<sup>−1</sup> = 6,020·10<sup>23</sup> moleculen</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo29", this)' class='vraag-knop'> Hoeveel moleculen water zitten er in 9,0 g water? De molaire massa is 18,0 g/mol. Gebruik N<sub>A</sub> = 6,02·10<sup>23</sup> mol<sup>−1</sup>. Rond af op 2 significante cijfers. Schrijf het antwoord in wetenschappelijke notatie. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoeveel moleculen water zitten er in 9,0 g water? De molaire massa is 18,0 g/mol. Gebruik NA = 6,02·1023 mol−1. Rond af op 2 significante cijfers. Schrijf het antwoord in wetenschappelijke notatie. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo29" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 9,0 g : 18,0 g/mol = 0,5 mol. Stap 2: 0,5 mol × 6,02·10<sup>23</sup> mol<sup>−1</sup> = 3,010·10<sup>23</sup> moleculen</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo30", this)' class='vraag-knop'> Je hebt 35 mL ethanol met een dichtheid van 0,92 g/mL. De molaire massa is 60,0 g/mol. Hoeveel mol ethanol is dat? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je hebt 35 mL ethanol met een dichtheid van 0,92 g/mL. De molaire massa is 60,0 g/mol. Hoeveel mol ethanol is dat? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo30" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 0,92 g/mL × 35 mL = 32,2 g. Stap 2: 32,2 g : 60,0 g/mol = 0,53667 mol</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo31", this)' class='vraag-knop'> Je hebt 1,5 mol ethanol. De molaire massa is 46,0 g/mol en de dichtheid is 0,79 g/mL. Welk volume in mL heeft deze hoeveelheid? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je hebt 1,5 mol ethanol. De molaire massa is 46,0 g/mol en de dichtheid is 0,79 g/mL. Welk volume in mL heeft deze hoeveelheid? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo31" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 1,5 mol × 46,0 g/mol = 69 g. Stap 2: 69 g : 0,79 g/mL = 87,342 mL</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo32", this)' class='vraag-knop'> Je hebt 150 mL oplossing met een concentratie van 0,240 mol/L. Hoeveel mol opgeloste stof zit erin? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je hebt 150 mL oplossing met een concentratie van 0,240 mol/L. Hoeveel mol opgeloste stof zit erin? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo32" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 150 mL = 0,15 L. Stap 2: 0,240 mol/L × 0,15 L = 0,036 mol</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo33", this)' class='vraag-knop'> Een tablet bevat 420 mg van een stof met een molaire massa van 60,0 g/mol. Hoeveel mol van de stof zit er in het tablet? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een tablet bevat 420 mg van een stof met een molaire massa van 60,0 g/mol. Hoeveel mol van de stof zit er in het tablet? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo33" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 420 mg = 0,42 g. Stap 2: 0,42 g : 60,0 g/mol = 0,007 mol</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo34", this)' class='vraag-knop'> Een gas (CH<sub>4</sub>, molaire massa 16,0 g/mol) heeft een volume van 5,6 L. Het molair volume is 24,5 L/mol. Wat is de massa van het gas in gram? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een gas (CH4, molaire massa 16,0 g/mol) heeft een volume van 5,6 L. Het molair volume is 24,5 L/mol. Wat is de massa van het gas in gram? Rond af op 2 significante cijfers. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af." placeholder='Type hier je antwoord'>
+  <div id="Demo34" class='w3-hide w3-container antwoord-box'>
+    <p> Stap 1: 5,6 L : 24,5 L/mol = 0,22857 mol. Stap 2: 0,22857 mol × 16,0 g/mol = 3,6571 g</p>
+  </div>
+</div>
+
+</div>
+
+<!-- Next button -->
+<div class="w3-container w3-padding-64 w3-center">
+<a class="w3-button knop-blauw" href="rv4h-stapelopdrachten-KB.html">Opnieuw oefenen</a>
+</div>
+<!-- Footer -->
+<div class="w3-container">
+</br>
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <p>Powered by <a href="https://www.peter-pan.nl" target="_blank">peter-pan</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>   
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+</div>
+
+<script src="school.js"></script>
+</body>
+</html>

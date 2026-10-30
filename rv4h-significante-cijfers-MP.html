@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Significante cijfers - 123 school</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="123school.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!-- Navbar -->
+    <div w3-include-html="navbar.html"></div>
+
+    <!-- Question container -->
+    <div class="w3-container w3-padding-64 w3-center" id="scheikunde">
+        <em>Significante cijfers</em>
+        <p>Oefen met het tellen en afronden van significante cijfers. Een getal als 1,0·10^{3} lees je als 1,0 × 10^{3}; de macht van 10 telt niet mee.</p>
+        <div id="quiz"></div>
+        <button id="submit" class="w3-button knop-blauw">Controleer nu</button>
+        <div id="results" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+        <p>Powered by <a href="https://www.123dakschoon.nl" target="_blank">peter-pan</a></p>
+        <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>
+            <a class="w3-button w3-theme" href="#myPage">
+                <span class="w3-xlarge"><i class="fa fa-chevron-circle-up"></i></span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        var myQuestions = [
+            {
+                question: "Hoeveel significante cijfers heeft 5,60?",
+                answers: {
+                    a: "3",
+                    b: "4",
+                    c: "2",
+                    d: "5"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Hoeveel significante cijfers heeft 0,0480?",
+                answers: {
+                    a: "2",
+                    b: "3",
+                    c: "4",
+                    d: "5"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Hoeveel significante cijfers heeft 102,5?",
+                answers: {
+                    a: "6",
+                    b: "5",
+                    c: "3",
+                    d: "4"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Hoeveel significante cijfers heeft 0,0070?",
+                answers: {
+                    a: "4",
+                    b: "1",
+                    c: "3",
+                    d: "2"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Hoeveel significante cijfers heeft 9,000?",
+                answers: {
+                    a: "6",
+                    b: "4",
+                    c: "3",
+                    d: "5"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Hoeveel significante cijfers heeft 0,300?",
+                answers: {
+                    a: "4",
+                    b: "5",
+                    c: "3",
+                    d: "2"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Hoeveel significante cijfers heeft 0,0000501?",
+                answers: {
+                    a: "4",
+                    b: "5",
+                    c: "3",
+                    d: "2"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Hoeveel significante cijfers heeft 25,00?",
+                answers: {
+                    a: "5",
+                    b: "3",
+                    c: "6",
+                    d: "4"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Hoeveel significante cijfers heeft 1,23·10<sup>−4</sup>?",
+                answers: {
+                    a: "4",
+                    b: "3",
+                    c: "5",
+                    d: "2"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Hoeveel significante cijfers heeft 3,0·10<sup>8</sup>?",
+                answers: {
+                    a: "1",
+                    b: "2",
+                    c: "4",
+                    d: "3"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Hoeveel significante cijfers heeft 7,200·10<sup>2</sup>?",
+                answers: {
+                    a: "5",
+                    b: "4",
+                    c: "6",
+                    d: "3"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Hoeveel significante cijfers heeft 0,0100?",
+                answers: {
+                    a: "5",
+                    b: "3",
+                    c: "2",
+                    d: "4"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Hoeveel significante cijfers heeft 6,0?",
+                answers: {
+                    a: "4",
+                    b: "3",
+                    c: "2",
+                    d: "1"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Hoeveel significante cijfers heeft 1,00·10<sup>5</sup>?",
+                answers: {
+                    a: "2",
+                    b: "4",
+                    c: "5",
+                    d: "3"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Rond 2,71828 af op 4 significante cijfers.",
+                answers: {
+                    a: "2,718",
+                    b: "2,719",
+                    c: "2,7183",
+                    d: "2,72"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Rond 0,0067891 af op 2 significante cijfers.",
+                answers: {
+                    a: "0,00679",
+                    b: "0,0067",
+                    c: "0,0068",
+                    d: "0,007"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Rond 45,65 af op 3 significante cijfers.",
+                answers: {
+                    a: "45,65",
+                    b: "45,7",
+                    c: "46",
+                    d: "45,6"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Rond 0,0099951 af op 3 significante cijfers.",
+                answers: {
+                    a: "0,010",
+                    b: "0,00999",
+                    c: "0,009995",
+                    d: "0,0100"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Rond 123,456 af op 4 significante cijfers.",
+                answers: {
+                    a: "123,46",
+                    b: "123,4",
+                    c: "123,5",
+                    d: "123"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Rond 1,0449 af op 3 significante cijfers.",
+                answers: {
+                    a: "1,045",
+                    b: "1,05",
+                    c: "1,04",
+                    d: "1,0"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Rond 0,030546 af op 2 significante cijfers.",
+                answers: {
+                    a: "0,030",
+                    b: "0,03",
+                    c: "0,0305",
+                    d: "0,031"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Rond 88,888 af op 3 significante cijfers.",
+                answers: {
+                    a: "88,8",
+                    b: "88,9",
+                    c: "89",
+                    d: "88,89"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Rond 1234567 af op 3 significante cijfers. Schrijf het antwoord in wetenschappelijke notatie.",
+                answers: {
+                    a: "1,24·10<sup>6</sup>",
+                    b: "1,2·10<sup>6</sup>",
+                    c: "1,235·10<sup>6</sup>",
+                    d: "1,23·10<sup>6</sup>"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Rond 0,00050349 af op 3 significante cijfers.",
+                answers: {
+                    a: "0,00050",
+                    b: "0,000503",
+                    c: "0,000504",
+                    d: "0,0005035"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Rond 29,995 af op 4 significante cijfers.",
+                answers: {
+                    a: "29,99",
+                    b: "29,995",
+                    c: "30,00",
+                    d: "30,0"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een massa is gemeten als 2 kg (1 significant cijfer). Tussen welke waarden ligt de werkelijke massa?",
+                answers: {
+                    a: "tussen 1,5 kg en 2,5 kg",
+                    b: "tussen 1 kg en 3 kg",
+                    c: "tussen 1,95 kg en 2,05 kg",
+                    d: "tussen 1,995 kg en 2,005 kg"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Een massa is gemeten als 2,0 kg (2 significante cijfers). Tussen welke waarden ligt de werkelijke massa?",
+                answers: {
+                    a: "tussen 1,5 kg en 2,5 kg",
+                    b: "tussen 1,9 kg en 2,1 kg",
+                    c: "tussen 1,95 kg en 2,05 kg",
+                    d: "tussen 1,995 kg en 2,005 kg"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een massa is gemeten als 2,00 kg (3 significante cijfers). Tussen welke waarden ligt de werkelijke massa?",
+                answers: {
+                    a: "tussen 1,995 kg en 2,005 kg",
+                    b: "tussen 1,95 kg en 2,05 kg",
+                    c: "tussen 1,5 kg en 2,5 kg",
+                    d: "tussen 1,99 kg en 2,01 kg"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Een massa is gemeten als 5,00 g (3 significante cijfers). Tussen welke waarden ligt de werkelijke massa?",
+                answers: {
+                    a: "tussen 4,5 g en 5,5 g",
+                    b: "tussen 4,995 g en 5,005 g",
+                    c: "tussen 4,99 g en 5,01 g",
+                    d: "tussen 4,95 g en 5,05 g"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Een massa is gemeten als 0,250 g (3 significante cijfers). Tussen welke waarden ligt de werkelijke massa?",
+                answers: {
+                    a: "tussen 0,2495 g en 0,2505 g",
+                    b: "tussen 0,245 g en 0,255 g",
+                    c: "tussen 0,25 g en 0,26 g",
+                    d: "tussen 0,2 g en 0,3 g"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Welke meting is nauwkeuriger: 2,5 g of 2,50 g?",
+                answers: {
+                    a: "2,5 g",
+                    b: "dat kun je niet zien",
+                    c: "2,50 g",
+                    d: "beide even nauwkeurig"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Welke meting is nauwkeuriger: 0,40 L of 0,4 L?",
+                answers: {
+                    a: "dat kun je niet zien",
+                    b: "beide even nauwkeurig",
+                    c: "0,40 L",
+                    d: "0,4 L"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Welke meting is nauwkeuriger: 12,0 mL of 12,00 mL?",
+                answers: {
+                    a: "dat kun je niet zien",
+                    b: "12,00 mL",
+                    c: "12,0 mL",
+                    d: "beide even nauwkeurig"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Welk van deze getallen heeft precies 3 significante cijfers?",
+                answers: {
+                    a: "0,012",
+                    b: "1,2",
+                    c: "0,01200",
+                    d: "0,0120"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Een van deze getallen heeft 3 significante cijfers. Welk getal?",
+                answers: {
+                    a: "0,45",
+                    b: "45,0",
+                    c: "45,00",
+                    d: "45"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Welk getal is op 3 significante cijfers weergegeven?",
+                answers: {
+                    a: "0,0030",
+                    b: "0,003",
+                    c: "0,030000",
+                    d: "0,00300"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Welk getal heeft evenveel significante cijfers als 4,56?",
+                answers: {
+                    a: "1,500·10<sup>3</sup>",
+                    b: "1,50·10<sup>3</sup>",
+                    c: "15·10<sup>2</sup>",
+                    d: "1,5·10<sup>3</sup>"
+                },
+                correctAnswer: 'b'
+            }
+        ];
+    </script>
+
+    <script src="school.js"></script>
+</body>
+</html>

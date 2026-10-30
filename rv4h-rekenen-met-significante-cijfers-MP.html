@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Rekenen met significante cijfers - 123 school</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="123school.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!-- Navbar -->
+    <div w3-include-html="navbar.html"></div>
+
+    <!-- Question container -->
+    <div class="w3-container w3-padding-64 w3-center" id="scheikunde">
+        <em>Rekenen met significante cijfers</em>
+        <p>Oefen met de regels voor het aantal significante cijfers bij vermenigvuldigen, delen, optellen en aftrekken.</p>
+        <div id="quiz"></div>
+        <button id="submit" class="w3-button knop-blauw">Controleer nu</button>
+        <div id="results" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+        <p>Powered by <a href="https://www.123dakschoon.nl" target="_blank">peter-pan</a></p>
+        <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>
+            <a class="w3-button w3-theme" href="#myPage">
+                <span class="w3-xlarge"><i class="fa fa-chevron-circle-up"></i></span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        var myQuestions = [
+            {
+                question: "Bereken 2,5 × 3,14. Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "7,85",
+                    b: "8",
+                    c: "7,8",
+                    d: "7,9"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Bereken 0,250 × 1,5. Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "0,4",
+                    b: "0,38",
+                    c: "0,375",
+                    d: "0,37"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Bereken 3,0·10<sup>1</sup> × 1,00·10<sup>2</sup>. Geef het antwoord met het juiste aantal significante cijfers. Schrijf het antwoord in wetenschappelijke notatie.",
+                answers: {
+                    a: "3,000·10<sup>3</sup>",
+                    b: "3·10<sup>3</sup>",
+                    c: "3,0·10<sup>3</sup>",
+                    d: "3,00·10<sup>3</sup>"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Bereken 12,0 ÷ 3,0. Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "4,000",
+                    b: "4,0",
+                    c: "4",
+                    d: "4,00"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Bereken 1,0·10<sup>1</sup> ÷ 3,0. Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "3",
+                    b: "3,33",
+                    c: "3,333",
+                    d: "3,3"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Bereken 1,00 × 3. Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "3",
+                    b: "3,000",
+                    c: "3,00",
+                    d: "3,0"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Bereken 15,6 g ÷ 12,5 mL. Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "1,24 g/mL",
+                    b: "1,248 g/mL",
+                    c: "1,2 g/mL",
+                    d: "1,25 g/mL"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Bereken 0,0250 mol/L × 0,0400 L. Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "0,0010 mol",
+                    b: "0,0010000 mol",
+                    c: "0,001000 mol",
+                    d: "0,00100 mol"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Bereken 4,50 g ÷ 1,5 mL. Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "3,0 g/mL",
+                    b: "3 g/mL",
+                    c: "3,000 g/mL",
+                    d: "3,00 g/mL"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Bereken 6,02·10<sup>23</sup> × 2,0 mol. Geef het antwoord met het juiste aantal significante cijfers. Schrijf het antwoord in wetenschappelijke notatie.",
+                answers: {
+                    a: "1,2·10<sup>24</sup>",
+                    b: "1·10<sup>24</sup>",
+                    c: "1,204·10<sup>24</sup>",
+                    d: "1,20·10<sup>24</sup>"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Bereken 8,314 J/(mol·K) × 298 K. Geef het antwoord met het juiste aantal significante cijfers. Schrijf het antwoord in wetenschappelijke notatie.",
+                answers: {
+                    a: "2,47·10<sup>3</sup> J/mol",
+                    b: "2,478·10<sup>3</sup> J/mol",
+                    c: "2,5·10<sup>3</sup> J/mol",
+                    d: "2,48·10<sup>3</sup> J/mol"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Bereken 0,1250 × 4,5. Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "0,563",
+                    b: "0,56",
+                    c: "0,5625",
+                    d: "0,6"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Bereken 9,81 m/s² × 2,0 kg. Geef het antwoord met het juiste aantal significante cijfers. Schrijf het antwoord in wetenschappelijke notatie.",
+                answers: {
+                    a: "1,96·10<sup>1</sup> N",
+                    b: "1,9·10<sup>1</sup> N",
+                    c: "2,0·10<sup>1</sup> N",
+                    d: "2·10<sup>1</sup> N"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Bereken 72,0 g ÷ 18,0 g/mol. Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "4,000 mol",
+                    b: "4,0 mol",
+                    c: "4,00 mol",
+                    d: "4,0000 mol"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Bereken 1,234 × 5,6. Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "6,910",
+                    b: "6,91",
+                    c: "7",
+                    d: "6,9"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Bereken 100,0 g ÷ 0,35 mL. Geef het antwoord met het juiste aantal significante cijfers. Schrijf het antwoord in wetenschappelijke notatie.",
+                answers: {
+                    a: "2,9·10<sup>2</sup> g/mL",
+                    b: "2,8·10<sup>2</sup> g/mL",
+                    c: "3·10<sup>2</sup> g/mL",
+                    d: "2,857·10<sup>2</sup> g/mL"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Bereken 12,5 + 3,25. Geef het antwoord met het juiste aantal decimalen.",
+                answers: {
+                    a: "15,75",
+                    b: "15,8",
+                    c: "16",
+                    d: "15,7"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Bereken 8,246 − 3,1. Geef het antwoord met het juiste aantal decimalen.",
+                answers: {
+                    a: "5",
+                    b: "5,1",
+                    c: "5,15",
+                    d: "5,146"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Bereken 0,056 + 1,2. Geef het antwoord met het juiste aantal decimalen.",
+                answers: {
+                    a: "1,26",
+                    b: "1,256",
+                    c: "1,3",
+                    d: "1"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Bereken 100,0 − 2,25. Geef het antwoord met het juiste aantal decimalen.",
+                answers: {
+                    a: "97,7",
+                    b: "97,75",
+                    c: "98",
+                    d: "97,8"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Bereken 45,67 − 0,2. Geef het antwoord met het juiste aantal decimalen.",
+                answers: {
+                    a: "45,47",
+                    b: "45,5",
+                    c: "45",
+                    d: "45,4"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Bereken 2,5 g + 125 mg. Reken eerst om naar g. Geef het antwoord in g met het juiste aantal decimalen.",
+                answers: {
+                    a: "3 g",
+                    b: "2,63 g",
+                    c: "2,625 g",
+                    d: "2,6 g"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Bereken 1,25 L − 250 mL. Reken eerst om naar L. Geef het antwoord in L met het juiste aantal decimalen.",
+                answers: {
+                    a: "1,0 L",
+                    b: "1,000 L",
+                    c: "1,00 L",
+                    d: "1,0000 L"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Bereken 3,5 kg + 250 g. Reken eerst om naar kg. Geef het antwoord in kg met het juiste aantal decimalen.",
+                answers: {
+                    a: "3,75 kg",
+                    b: "4 kg",
+                    c: "3,750 kg",
+                    d: "3,8 kg"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Bereken 0,50 L + 25 mL. Reken eerst om naar L. Geef het antwoord in L met het juiste aantal decimalen.",
+                answers: {
+                    a: "0,53 L",
+                    b: "0,525 L",
+                    c: "0,52 L",
+                    d: "0,5 L"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Bereken 2,34 − 0,5. Geef het antwoord met het juiste aantal decimalen.",
+                answers: {
+                    a: "1,84",
+                    b: "1,840",
+                    c: "2",
+                    d: "1,8"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Bereken 7,0 + 0,25. Geef het antwoord met het juiste aantal decimalen.",
+                answers: {
+                    a: "7,25",
+                    b: "7,2",
+                    c: "7",
+                    d: "7,3"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Bereken 15,75 g − 3,6 g. Geef het antwoord in g met het juiste aantal decimalen.",
+                answers: {
+                    a: "12,15 g",
+                    b: "12,2 g",
+                    c: "12,1 g",
+                    d: "12 g"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Een tablet bevat 2,50 g van een stof. Je neemt precies 4 tabletten. Hoeveel gram is dat? Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "10,00 g",
+                    b: "1·10<sup>1</sup> g",
+                    c: "10,0 g",
+                    d: "10,000 g"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een molecuul water bevat precies 2 H-atomen. Een H-atoom heeft een massa van 1,008 u. Hoeveel u wegen de H-atomen samen? Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "2 u",
+                    b: "2,0160 u",
+                    c: "2,016 u",
+                    d: "2,02 u"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een laborant meet 3 keer precies 5,0 mL af. Hoeveel mL is dat samen? Geef het antwoord met het juiste aantal significante cijfers.",
+                answers: {
+                    a: "15,00 mL",
+                    b: "15,0 mL",
+                    c: "2·10<sup>1</sup> mL",
+                    d: "15 mL"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Welke regel geldt bij vermenigvuldigen en delen?",
+                answers: {
+                    a: "Het antwoord heeft evenveel significante cijfers als het getal met de minste significante cijfers.",
+                    b: "Het antwoord heeft evenveel significante cijfers als het getal met de meeste significante cijfers.",
+                    c: "Het antwoord heeft evenveel significante cijfers als de som van beide getallen.",
+                    d: "Het antwoord heeft evenveel decimalen als het getal met de minste decimalen."
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Welke regel geldt bij optellen en aftrekken?",
+                answers: {
+                    a: "Het antwoord heeft evenveel decimalen als het getal met de meeste decimalen.",
+                    b: "Het antwoord heeft evenveel significante cijfers als het getal met de minste significante cijfers.",
+                    c: "Het antwoord heeft altijd 1 decimaal.",
+                    d: "Het antwoord heeft evenveel decimalen als het getal met de minste decimalen (na omrekenen naar dezelfde eenheid)."
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Wat moet je doen vóór je 2,5 g en 125 mg optelt?",
+                answers: {
+                    a: "Niets, je kunt ze zo optellen",
+                    b: "Eerst beide in dezelfde eenheid zetten",
+                    c: "Eerst het aantal significante cijfers van het antwoord bepalen",
+                    d: "Eerst beide afronden op 1 significant cijfer"
+                },
+                correctAnswer: 'b'
+            }
+        ];
+    </script>
+
+    <script src="school.js"></script>
+</body>
+</html>

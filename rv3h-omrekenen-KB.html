@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<title>Eenheden omrekenen - 123 school</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="123school.css">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<!-- Navbar -->
+<div w3-include-html="navbar.html"></div>
+</br>
+
+<!-- Accordion Knowledge Bank -->
+<div class="w3-container">
+
+<h2>Eenheden omrekenen</h2>
+<p>Test je kennis door je antwoord in te typen en te vergelijken met het juiste antwoord, door te klikken op de vraag.</p>
+<p>Oefen het omrekenen van eenheden. In elke vraag staat hoe je moet afronden.</p>
+
+<div>
+  <button onclick='myFunction("Demo1", this)' class='vraag-knop'> Reken 1234 g om naar kg. Rond af op 1 decimaal.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 1234 g om naar kg. Rond af op 1 decimaal." placeholder='Type hier je antwoord'>
+  <div id="Demo1" class='w3-hide w3-container antwoord-box'>
+    <p> 1 kg = 1000 g, dus 1234 g = 1,2 kg</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo2", this)' class='vraag-knop'> Reken 0,0075 kg om naar g. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 0,0075 kg om naar g. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo2" class='w3-hide w3-container antwoord-box'>
+    <p> 1 kg = 1000 g, dus 0,0075 kg = 7,5 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo3", this)' class='vraag-knop'> Reken 125 mg om naar g. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 125 mg om naar g. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo3" class='w3-hide w3-container antwoord-box'>
+    <p> 1 g = 1000 mg, dus 125 mg = 0,125 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo4", this)' class='vraag-knop'> Reken 0,045 g om naar mg. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 0,045 g om naar mg. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo4" class='w3-hide w3-container antwoord-box'>
+    <p> 1 g = 1000 mg, dus 0,045 g = 45 mg</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo5", this)' class='vraag-knop'> Reken 3750 mL om naar L. Rond af op 1 decimaal.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 3750 mL om naar L. Rond af op 1 decimaal." placeholder='Type hier je antwoord'>
+  <div id="Demo5" class='w3-hide w3-container antwoord-box'>
+    <p> 1 L = 1000 mL, dus 3750 mL = 3,8 L</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo6", this)' class='vraag-knop'> Reken 0,0125 L om naar mL. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 0,0125 L om naar mL. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo6" class='w3-hide w3-container antwoord-box'>
+    <p> 1 L = 1000 mL, dus 0,0125 L = 12,5 mL</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo7", this)' class='vraag-knop'> Reken 35 cm<sup>3</sup> om naar dm<sup>3</sup>. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 35 cm3 om naar dm3. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo7" class='w3-hide w3-container antwoord-box'>
+    <p> 1 dm<sup>3</sup> = 1000 cm<sup>3</sup>, dus 35 cm<sup>3</sup> = 0,035 dm<sup>3</sup></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo8", this)' class='vraag-knop'> Reken 0,5 m<sup>3</sup> om naar L. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 0,5 m3 om naar L. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo8" class='w3-hide w3-container antwoord-box'>
+    <p> 1 m<sup>3</sup> = 1000 L, dus 0,5 m<sup>3</sup> = 500 L</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo9", this)' class='vraag-knop'> Reken 480 L om naar m<sup>3</sup>. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 480 L om naar m3. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo9" class='w3-hide w3-container antwoord-box'>
+    <p> 1 m<sup>3</sup> = 1000 L, dus 480 L = 0,48 m<sup>3</sup></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo10", this)' class='vraag-knop'> Reken 250 cm<sup>3</sup> om naar L. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 250 cm3 om naar L. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo10" class='w3-hide w3-container antwoord-box'>
+    <p> 1 L = 1000 cm<sup>3</sup>, dus 250 cm<sup>3</sup> = 0,25 L</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo11", this)' class='vraag-knop'> Reken 1,5 dm<sup>3</sup> om naar mL. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 1,5 dm3 om naar mL. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo11" class='w3-hide w3-container antwoord-box'>
+    <p> 1 dm<sup>3</sup> = 1000 mL, dus 1,5 dm<sup>3</sup> = 1500 mL</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo12", this)' class='vraag-knop'> Reken 7500 mL om naar dm<sup>3</sup>. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 7500 mL om naar dm3. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo12" class='w3-hide w3-container antwoord-box'>
+    <p> 1 dm<sup>3</sup> = 1000 mL, dus 7500 mL = 7,5 dm<sup>3</sup></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo13", this)' class='vraag-knop'> Reken 135 min om naar h. Rond af op 2 decimalen.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 135 min om naar h. Rond af op 2 decimalen." placeholder='Type hier je antwoord'>
+  <div id="Demo13" class='w3-hide w3-container antwoord-box'>
+    <p> 1 h = 60 min, dus 135 min = 2,25 h</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo14", this)' class='vraag-knop'> Reken 0,25 h om naar s. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 0,25 h om naar s. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo14" class='w3-hide w3-container antwoord-box'>
+    <p> 1 h = 3600 s, dus 0,25 h = 900 s</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo15", this)' class='vraag-knop'> Reken 2,5 kg om naar mg. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 2,5 kg om naar mg. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo15" class='w3-hide w3-container antwoord-box'>
+    <p> 1 kg = 10<sup>6</sup> mg, dus 2,5 kg = 2 500 000 mg</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo16", this)' class='vraag-knop'> Reken 8 mg om naar kg. Rond af op 6 decimalen.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 8 mg om naar kg. Rond af op 6 decimalen." placeholder='Type hier je antwoord'>
+  <div id="Demo16" class='w3-hide w3-container antwoord-box'>
+    <p> 1 kg = 10<sup>6</sup> mg, dus 8 mg = 0,000008 kg</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo17", this)' class='vraag-knop'> Reken 3 m<sup>3</sup> om naar cm<sup>3</sup>. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 3 m3 om naar cm3. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo17" class='w3-hide w3-container antwoord-box'>
+    <p> , dus 3 m<sup>3</sup> = 3 000 000 cm<sup>3</sup></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo18", this)' class='vraag-knop'> Hoeveel gram is 1 mg?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoeveel gram is 1 mg?" placeholder='Type hier je antwoord'>
+  <div id="Demo18" class='w3-hide w3-container antwoord-box'>
+    <p> 1 g = 1000 mg, dus 1 mg = 0,001 g</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo19", this)' class='vraag-knop'> Welk volume is gelijk aan 1 m<sup>3</sup>?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welk volume is gelijk aan 1 m3?" placeholder='Type hier je antwoord'>
+  <div id="Demo19" class='w3-hide w3-container antwoord-box'>
+    <p> 1 m<sup>3</sup> = 1000 dm<sup>3</sup> = 1000 L</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo20", this)' class='vraag-knop'> Een snelheid van 36 km/h is in m/s gelijk aan …</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een snelheid van 36 km/h is in m/s gelijk aan …" placeholder='Type hier je antwoord'>
+  <div id="Demo20" class='w3-hide w3-container antwoord-box'>
+    <p> 36 km/h = 36 000 m : 3600 s = 10 m/s</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo21", this)' class='vraag-knop'> Een snelheid van 5 m/s is in km/h gelijk aan …</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Een snelheid van 5 m/s is in km/h gelijk aan …" placeholder='Type hier je antwoord'>
+  <div id="Demo21" class='w3-hide w3-container antwoord-box'>
+    <p> 5 m/s × 3600 s/h : 1000 m/km = 18 km/h</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo22", this)' class='vraag-knop'> Reken 0,79 g/mL om naar g/L. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 0,79 g/mL om naar g/L. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo22" class='w3-hide w3-container antwoord-box'>
+    <p> 1 mL = 0,001 L, dus 0,79 g/mL = 0,79 g : 0,001 L = 790 g/L</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo23", this)' class='vraag-knop'> Reken 100 km/h om naar m/s. Rond af op 1 decimaal.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 100 km/h om naar m/s. Rond af op 1 decimaal." placeholder='Type hier je antwoord'>
+  <div id="Demo23" class='w3-hide w3-container antwoord-box'>
+    <p> 100 km/h = 100 000 m : 3600 s = 27,8 m/s</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo24", this)' class='vraag-knop'> Reken 25 g/L om naar mg/mL. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 25 g/L om naar mg/mL. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo24" class='w3-hide w3-container antwoord-box'>
+    <p> 25 g = 25 000 mg en 1 L = 1000 mL, dus 25 g/L = 25 mg/mL</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo25", this)' class='vraag-knop'> Reken 1,2 g/mL om naar kg/L. Je hoeft niet af te ronden.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Reken 1,2 g/mL om naar kg/L. Je hoeft niet af te ronden." placeholder='Type hier je antwoord'>
+  <div id="Demo25" class='w3-hide w3-container antwoord-box'>
+    <p> 1,2 g/mL = 1,2 kg/L (kg en L zijn beide 1000 keer zo groot)</p>
+  </div>
+</div>
+
+</div>
+
+<!-- Next button -->
+<div class="w3-container w3-padding-64 w3-center">
+<a class="w3-button knop-blauw" href="rv3h-omrekenen-KB.html">Opnieuw oefenen</a>
+</div>
+<!-- Footer -->
+<div class="w3-container">
+</br>
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <p>Powered by <a href="https://www.peter-pan.nl" target="_blank">peter-pan</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>   
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+</div>
+
+<script src="school.js"></script>
+</body>
+</html>

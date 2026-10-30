@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Eenheden omrekenen - 123 school</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="123school.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!-- Navbar -->
+    <div w3-include-html="navbar.html"></div>
+
+    <!-- Question container -->
+    <div class="w3-container w3-padding-64 w3-center" id="scheikunde">
+        <em>Eenheden omrekenen</em>
+        <p>Oefen het omrekenen van eenheden. In elke vraag staat hoe je moet afronden.</p>
+        <div id="quiz"></div>
+        <button id="submit" class="w3-button knop-blauw">Controleer nu</button>
+        <div id="results" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+        <p>Powered by <a href="https://www.123dakschoon.nl" target="_blank">peter-pan</a></p>
+        <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>
+            <a class="w3-button w3-theme" href="#myPage">
+                <span class="w3-xlarge"><i class="fa fa-chevron-circle-up"></i></span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        var myQuestions = [
+            {
+                question: "Reken 1234 g om naar kg. Rond af op 1 decimaal.",
+                answers: {
+                    a: "12,3 kg",
+                    b: "1 234 000,0 kg",
+                    c: "1,2 kg",
+                    d: "0,12 kg"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Reken 0,0075 kg om naar g. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "0,75 g",
+                    b: "0,0000075 g",
+                    c: "75 g",
+                    d: "7,5 g"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Reken 125 mg om naar g. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "125 000 g",
+                    b: "0,125 g",
+                    c: "1,25 g",
+                    d: "0,0125 g"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Reken 0,045 g om naar mg. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "0,000045 mg",
+                    b: "45 mg",
+                    c: "450 mg",
+                    d: "4,5 mg"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Reken 3750 mL om naar L. Rond af op 1 decimaal.",
+                answers: {
+                    a: "3,8 L",
+                    b: "37,5 L",
+                    c: "3 750 000,0 L",
+                    d: "0,38 L"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Reken 0,0125 L om naar mL. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "0,0000125 mL",
+                    b: "1,25 mL",
+                    c: "12,5 mL",
+                    d: "125 mL"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Reken 35 cm<sup>3</sup> om naar dm<sup>3</sup>. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "0,0035 dm<sup>3</sup>",
+                    b: "35 000 dm<sup>3</sup>",
+                    c: "0,35 dm<sup>3</sup>",
+                    d: "0,035 dm<sup>3</sup>"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Reken 0,5 m<sup>3</sup> om naar L. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "50 L",
+                    b: "5000 L",
+                    c: "500 L",
+                    d: "0,0005 L"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Reken 480 L om naar m<sup>3</sup>. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "4,8 m<sup>3</sup>",
+                    b: "0,048 m<sup>3</sup>",
+                    c: "480 000 m<sup>3</sup>",
+                    d: "0,48 m<sup>3</sup>"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Reken 250 cm<sup>3</sup> om naar L. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "2,5 L",
+                    b: "250 000 L",
+                    c: "0,25 L",
+                    d: "0,025 L"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Reken 1,5 dm<sup>3</sup> om naar mL. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "150 mL",
+                    b: "0,0015 mL",
+                    c: "15 000 mL",
+                    d: "1500 mL"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Reken 7500 mL om naar dm<sup>3</sup>. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "0,75 dm<sup>3</sup>",
+                    b: "7 500 000 dm<sup>3</sup>",
+                    c: "7,5 dm<sup>3</sup>",
+                    d: "75 dm<sup>3</sup>"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Reken 135 min om naar h. Rond af op 2 decimalen.",
+                answers: {
+                    a: "22,50 h",
+                    b: "8100,00 h",
+                    c: "2,25 h",
+                    d: "0,225 h"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Reken 0,25 h om naar s. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "900 s",
+                    b: "0,00 s",
+                    c: "9000 s",
+                    d: "90 s"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Reken 2,5 kg om naar mg. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "0,0000025 mg",
+                    b: "25 000 000 mg",
+                    c: "250 000 mg",
+                    d: "2 500 000 mg"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Reken 8 mg om naar kg. Rond af op 6 decimalen.",
+                answers: {
+                    a: "8 000 000,000000 kg",
+                    b: "0,000080 kg",
+                    c: "0,000008 kg",
+                    d: "0,0000008 kg"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Reken 3 m<sup>3</sup> om naar cm<sup>3</sup>. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "0,000003 cm<sup>3</sup>",
+                    b: "300 000 cm<sup>3</sup>",
+                    c: "3 000 000 cm<sup>3</sup>",
+                    d: "30 000 000 cm<sup>3</sup>"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Hoeveel gram is 1 mg?",
+                answers: {
+                    a: "0,01 g",
+                    b: "0,001 g",
+                    c: "0,000001 g",
+                    d: "1000 g"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Welk volume is gelijk aan 1 m<sup>3</sup>?",
+                answers: {
+                    a: "1 L",
+                    b: "100 L",
+                    c: "10 L",
+                    d: "1000 L"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Een snelheid van 36 km/h is in m/s gelijk aan …",
+                answers: {
+                    a: "100 m/s",
+                    b: "10 m/s",
+                    c: "36 m/s",
+                    d: "129,6 m/s"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Een snelheid van 5 m/s is in km/h gelijk aan …",
+                answers: {
+                    a: "300 km/h",
+                    b: "18 km/h",
+                    c: "5 km/h",
+                    d: "1,4 km/h"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Reken 0,79 g/mL om naar g/L. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "0,079 g/L",
+                    b: "790 g/L",
+                    c: "0,79 g/L",
+                    d: "79 g/L"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Reken 100 km/h om naar m/s. Rond af op 1 decimaal.",
+                answers: {
+                    a: "360,0 m/s",
+                    b: "27,8 m/s",
+                    c: "100 m/s",
+                    d: "36 m/s"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Reken 25 g/L om naar mg/mL. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "2,5 mg/mL",
+                    b: "0,025 mg/mL",
+                    c: "25 000 mg/mL",
+                    d: "25 mg/mL"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Reken 1,2 g/mL om naar kg/L. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "1,2 kg/L",
+                    b: "0,0012 kg/L",
+                    c: "12 kg/L",
+                    d: "1200 kg/L"
+                },
+                correctAnswer: 'a'
+            }
+        ];
+    </script>
+
+    <script src="school.js"></script>
+</body>
+</html>
