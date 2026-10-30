@@ -416,3 +416,6 @@ table { max-width: 100%; }
 .rekentabel th, .rekentabel td { padding: 6px 8px; text-align: center; font-size: 15px; overflow-wrap: normal; word-break: normal; }
 .rekentabel th:first-child, .rekentabel td:first-child { text-align: left; }
 .rekenregel { margin-top: 8px; font-weight: bold; }
+
+/* Rekenvaardigheden: korte uitwerking onder het antwoord */
+.antwoord-box .uitleg { font-size: 0.9em; color: #333333; margin-top: 0; }
