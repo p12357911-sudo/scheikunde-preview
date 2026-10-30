@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<title>Zuren en basen - 123 school</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="123school.css">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<!-- Navbar -->
+<div w3-include-html="navbar.html"></div>
+</br>
+
+<!-- Accordion Knowledge Bank -->
+<div class="w3-container">
+
+<h2>Zuren en basen</h2>
+<p>Test je kennis door je antwoord in te typen en te vergelijken met het juiste antwoord, door te klikken op de vraag.</p>
+<p>Deze begrippen en berekeningen leer je door te oefenen. Alleen bij een vraag waar een Binas-tabel bij staat, gebruik je Binas.</p>
+
+<div>
+  <button onclick='myFunction("Demo1", this)' class='vraag-knop'> Welke pH heeft een zure oplossing?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welke pH heeft een zure oplossing?" placeholder='Type hier je antwoord'>
+  <div id="Demo1" class='w3-hide w3-container antwoord-box'>
+    <p> Lager dan 7</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo2", this)' class='vraag-knop'> Welke pH heeft een neutrale oplossing?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welke pH heeft een neutrale oplossing?" placeholder='Type hier je antwoord'>
+  <div id="Demo2" class='w3-hide w3-container antwoord-box'>
+    <p> 7</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo3", this)' class='vraag-knop'> Welke pH heeft een basische oplossing?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welke pH heeft een basische oplossing?" placeholder='Type hier je antwoord'>
+  <div id="Demo3" class='w3-hide w3-container antwoord-box'>
+    <p> Hoger dan 7</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo4", this)' class='vraag-knop'> Welk ion zorgt ervoor dat een oplossing zuur is?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welk ion zorgt ervoor dat een oplossing zuur is?" placeholder='Type hier je antwoord'>
+  <div id="Demo4" class='w3-hide w3-container antwoord-box'>
+    <p> H<sup>+</sup> (aq)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo5", this)' class='vraag-knop'> Welk ion zorgt ervoor dat een oplossing basisch is?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welk ion zorgt ervoor dat een oplossing basisch is?" placeholder='Type hier je antwoord'>
+  <div id="Demo5" class='w3-hide w3-container antwoord-box'>
+    <p> OH<sup>−</sup> (aq)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo6", this)' class='vraag-knop'> Wat weet je over het aantal H<sup>+</sup> en OH<sup>−</sup> ionen in een neutrale oplossing?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat weet je over het aantal H+ en OH− ionen in een neutrale oplossing?" placeholder='Type hier je antwoord'>
+  <div id="Demo6" class='w3-hide w3-container antwoord-box'>
+    <p> Er zijn evenveel H<sup>+</sup> ionen als OH<sup>−</sup> ionen</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo7", this)' class='vraag-knop'> Welke pH is het zuurst: 2, 5, 7 of 9?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welke pH is het zuurst: 2, 5, 7 of 9?" placeholder='Type hier je antwoord'>
+  <div id="Demo7" class='w3-hide w3-container antwoord-box'>
+    <p> pH 2: hoe lager de pH, hoe zuurder de oplossing</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo8", this)' class='vraag-knop'> Wat is de formule van zoutzuur?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is de formule van zoutzuur?" placeholder='Type hier je antwoord'>
+  <div id="Demo8" class='w3-hide w3-container antwoord-box'>
+    <p> HCl (opgelost in water: HCl (aq))</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo9", this)' class='vraag-knop'> Wat is de formule van zwavelzuur?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is de formule van zwavelzuur?" placeholder='Type hier je antwoord'>
+  <div id="Demo9" class='w3-hide w3-container antwoord-box'>
+    <p> H<sub>2</sub>SO<sub>4</sub></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo10", this)' class='vraag-knop'> Wat is de formule van salpeterzuur?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is de formule van salpeterzuur?" placeholder='Type hier je antwoord'>
+  <div id="Demo10" class='w3-hide w3-container antwoord-box'>
+    <p> HNO<sub>3</sub></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo11", this)' class='vraag-knop'> Wat is de formule van azijnzuur?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is de formule van azijnzuur?" placeholder='Type hier je antwoord'>
+  <div id="Demo11" class='w3-hide w3-container antwoord-box'>
+    <p> CH<sub>3</sub>COOH, ook geschreven als HAc</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo12", this)' class='vraag-knop'> Wat is de formule van natronloog?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is de formule van natronloog?" placeholder='Type hier je antwoord'>
+  <div id="Demo12" class='w3-hide w3-container antwoord-box'>
+    <p> NaOH</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo13", this)' class='vraag-knop'> Wat is de formule van kaliloog?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is de formule van kaliloog?" placeholder='Type hier je antwoord'>
+  <div id="Demo13" class='w3-hide w3-container antwoord-box'>
+    <p> KOH</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo14", this)' class='vraag-knop'> Wat is de formule van kalkwater?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is de formule van kalkwater?" placeholder='Type hier je antwoord'>
+  <div id="Demo14" class='w3-hide w3-container antwoord-box'>
+    <p> Ca(OH)<sub>2</sub></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo15", this)' class='vraag-knop'> Wat is de formule van ammoniak, een base?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is de formule van ammoniak, een base?" placeholder='Type hier je antwoord'>
+  <div id="Demo15" class='w3-hide w3-container antwoord-box'>
+    <p> NH<sub>3</sub></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo16", this)' class='vraag-knop'> Welke ionen ontstaan als HCl oplost in water? Schrijf de reactievergelijking op.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welke ionen ontstaan als HCl oplost in water? Schrijf de reactievergelijking op." placeholder='Type hier je antwoord'>
+  <div id="Demo16" class='w3-hide w3-container antwoord-box'>
+    <p> HCl (g) → H<sup>+</sup> (aq) + Cl<sup>−</sup> (aq)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo17", this)' class='vraag-knop'> Schrijf de reactievergelijking op voor het oplossen van natriumhydroxide in water.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Schrijf de reactievergelijking op voor het oplossen van natriumhydroxide in water." placeholder='Type hier je antwoord'>
+  <div id="Demo17" class='w3-hide w3-container antwoord-box'>
+    <p> NaOH (s) → Na<sup>+</sup> (aq) + OH<sup>−</sup> (aq)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo18", this)' class='vraag-knop'> Schrijf de reactievergelijking op voor het oplossen van zwavelzuur (H<sub>2</sub>SO<sub>4</sub>) in water.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Schrijf de reactievergelijking op voor het oplossen van zwavelzuur (H2SO4) in water." placeholder='Type hier je antwoord'>
+  <div id="Demo18" class='w3-hide w3-container antwoord-box'>
+    <p> H<sub>2</sub>SO<sub>4</sub> (l) → 2 H<sup>+</sup> (aq) + SO<sub>4</sub><sup>2−</sup> (aq)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo19", this)' class='vraag-knop'> Wat is neutralisatie?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is neutralisatie?" placeholder='Type hier je antwoord'>
+  <div id="Demo19" class='w3-hide w3-container antwoord-box'>
+    <p> Een zuur reageert met een base tot een zout en water, en de pH wordt 7</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo20", this)' class='vraag-knop'> Wat is de reactievergelijking in ionen van de neutralisatie van een zuur met een base?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is de reactievergelijking in ionen van de neutralisatie van een zuur met een base?" placeholder='Type hier je antwoord'>
+  <div id="Demo20" class='w3-hide w3-container antwoord-box'>
+    <p> H<sup>+</sup> (aq) + OH<sup>−</sup> (aq) → H<sub>2</sub>O (l)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo21", this)' class='vraag-knop'> Zoutzuur reageert met natronloog. Schrijf de reactievergelijking op.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Zoutzuur reageert met natronloog. Schrijf de reactievergelijking op." placeholder='Type hier je antwoord'>
+  <div id="Demo21" class='w3-hide w3-container antwoord-box'>
+    <p> HCl (aq) + NaOH (aq) → NaCl (aq) + H<sub>2</sub>O (l)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo22", this)' class='vraag-knop'> Zwavelzuur reageert met natronloog. Schrijf de reactievergelijking op.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Zwavelzuur reageert met natronloog. Schrijf de reactievergelijking op." placeholder='Type hier je antwoord'>
+  <div id="Demo22" class='w3-hide w3-container antwoord-box'>
+    <p> H<sub>2</sub>SO<sub>4</sub> (aq) + 2 NaOH (aq) → Na<sub>2</sub>SO<sub>4</sub> (aq) + 2 H<sub>2</sub>O (l)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo23", this)' class='vraag-knop'> Welk zout ontstaat als salpeterzuur (HNO<sub>3</sub>) reageert met kaliloog (KOH)?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welk zout ontstaat als salpeterzuur (HNO3) reageert met kaliloog (KOH)?" placeholder='Type hier je antwoord'>
+  <div id="Demo23" class='w3-hide w3-container antwoord-box'>
+    <p> Kaliumnitraat</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo24", this)' class='vraag-knop'> Zink reageert met zoutzuur. Schrijf de reactievergelijking op.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Zink reageert met zoutzuur. Schrijf de reactievergelijking op." placeholder='Type hier je antwoord'>
+  <div id="Demo24" class='w3-hide w3-container antwoord-box'>
+    <p> Zn (s) + 2 HCl (aq) → ZnCl<sub>2</sub> (aq) + H<sub>2</sub> (g)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo25", this)' class='vraag-knop'> Welk gas ontstaat als een zuur reageert met een onedel metaal, en hoe toon je het aan?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welk gas ontstaat als een zuur reageert met een onedel metaal, en hoe toon je het aan?" placeholder='Type hier je antwoord'>
+  <div id="Demo25" class='w3-hide w3-container antwoord-box'>
+    <p> Waterstof; een brandende houtspaander geeft een knal</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo26", this)' class='vraag-knop'> Kalk (CaCO<sub>3</sub>) reageert met zoutzuur. Schrijf de reactievergelijking op.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Kalk (CaCO3) reageert met zoutzuur. Schrijf de reactievergelijking op." placeholder='Type hier je antwoord'>
+  <div id="Demo26" class='w3-hide w3-container antwoord-box'>
+    <p> CaCO<sub>3</sub> (s) + 2 HCl (aq) → CaCl<sub>2</sub> (aq) + H<sub>2</sub>O (l) + CO<sub>2</sub> (g)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo27", this)' class='vraag-knop'> Welke kleur heeft lakmoes in een zure oplossing? (gebruik BINAS tabel 36)</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welke kleur heeft lakmoes in een zure oplossing? (gebruik BINAS tabel 36)" placeholder='Type hier je antwoord'>
+  <div id="Demo27" class='w3-hide w3-container antwoord-box'>
+    <p> Rood</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo28", this)' class='vraag-knop'> Welke kleur heeft broomthymolblauw in een basische oplossing? (gebruik BINAS tabel 36)</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welke kleur heeft broomthymolblauw in een basische oplossing? (gebruik BINAS tabel 36)" placeholder='Type hier je antwoord'>
+  <div id="Demo28" class='w3-hide w3-container antwoord-box'>
+    <p> Blauw</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo29", this)' class='vraag-knop'> Welke kleur heeft fenolftaleïen in een sterk basische oplossing? (gebruik BINAS tabel 36)</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welke kleur heeft fenolftaleïen in een sterk basische oplossing? (gebruik BINAS tabel 36)" placeholder='Type hier je antwoord'>
+  <div id="Demo29" class='w3-hide w3-container antwoord-box'>
+    <p> Roze (paars). In een zure of neutrale oplossing is fenolftaleïen kleurloos</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo30", this)' class='vraag-knop'> Universeelindicatorpapier wordt groen in een oplossing. Wat voor oplossing is dit?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Universeelindicatorpapier wordt groen in een oplossing. Wat voor oplossing is dit?" placeholder='Type hier je antwoord'>
+  <div id="Demo30" class='w3-hide w3-container antwoord-box'>
+    <p> Een neutrale oplossing</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo31", this)' class='vraag-knop'> Je verdunt een zure oplossing met veel water. Wat gebeurt er met de pH?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je verdunt een zure oplossing met veel water. Wat gebeurt er met de pH?" placeholder='Type hier je antwoord'>
+  <div id="Demo31" class='w3-hide w3-container antwoord-box'>
+    <p> De pH wordt hoger, richting 7</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo32", this)' class='vraag-knop'> Je druppelt natronloog in zoutzuur. Wat gebeurt er met de pH?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je druppelt natronloog in zoutzuur. Wat gebeurt er met de pH?" placeholder='Type hier je antwoord'>
+  <div id="Demo32" class='w3-hide w3-container antwoord-box'>
+    <p> De pH stijgt tot 7 bij neutralisatie en daarna verder</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo33", this)' class='vraag-knop'> Welk pictogram staat op een fles geconcentreerd zoutzuur?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welk pictogram staat op een fles geconcentreerd zoutzuur?" placeholder='Type hier je antwoord'>
+  <div id="Demo33" class='w3-hide w3-container antwoord-box'>
+    <p> Het pictogram voor bijtend (corrosief)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo34", this)' class='vraag-knop'> Waarom houd je een sterk zuur of een sterke base niet op je huid?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Waarom houd je een sterk zuur of een sterke base niet op je huid?" placeholder='Type hier je antwoord'>
+  <div id="Demo34" class='w3-hide w3-container antwoord-box'>
+    <p> Ze zijn bijtend en beschadigen je huid</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo35", this)' class='vraag-knop'> Hoe kun je met een indicator de pH van een oplossing schatten?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoe kun je met een indicator de pH van een oplossing schatten?" placeholder='Type hier je antwoord'>
+  <div id="Demo35" class='w3-hide w3-container antwoord-box'>
+    <p> Je kijkt welke kleur de indicator heeft en zoekt in Binas tabel 36 bij welke pH die kleur hoort</p>
+  </div>
+</div>
+
+</div>
+
+<!-- Next button -->
+<div class="w3-container w3-padding-64 w3-center">
+<a class="w3-button knop-blauw" href="sk4t-zuren-basen-KB.html">Opnieuw oefenen</a>
+</div>
+<!-- Footer -->
+<div class="w3-container">
+</br>
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <p>Powered by <a href="https://www.peter-pan.nl" target="_blank">peter-pan</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>   
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+</div>
+
+<script src="school.js"></script>
+</body>
+</html>

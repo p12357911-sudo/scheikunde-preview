@@ -222,3 +222,12 @@ Voor elk hoofdstuk dat Peter nu behandelt is minstens één KB- en één MP-pagi
 - Zolang `AI_URL` leeg is of nog `JOUW-SUBDOMEIN` bevat, is AI-nakijken uit en blijft de melding "In ontwikkeling" staan. De pagina werkt dan als een gewone KB-pagina.
 - Lukt het nakijken niet (Worker niet bereikbaar, gratis limiet op, fout), dan toont de pagina gewoon het juiste antwoord.
 - De oude demo-functie `submitAnswer` is verwijderd; andere pagina's zijn niet aangepast.
+
+## Fase 3 (branch `fase3-pulsar`, alleen preview)
+
+- Nieuw 3T: Reactiesnelheid (KB 35, MP 34). De reactiesnelheid-vragen die verspreid stonden zijn naar deze pagina verplaatst.
+- Nieuw 4T: Zuren en basen, Zoutreacties, Schoonmaken en verzorgen (zeep, wassen), Rekenen aan stoffen en reacties (elk KB + MP).
+- Metalen is verhuisd van 3T naar 4T (`sk4t-metalen-*`). De oude adressen `sk3t-metalen-*` sturen door.
+- Zeep-/crèmevragen van 3T Water naar Schoonmaken (4T); g/L-vragen naar 4T Rekenen.
+- Rekenvragen volgen de vijf stappen met een verhoudingstabel (3T Rekenen aan reacties en 4T Rekenen).
+- Toestandsaanduidingen met spatie (`CO2 (g)`) in alle 3T/4T-pagina's; Binas-verwijzingen: periodiek systeem tabel 34, naamgeving tabel 42.

@@ -406,3 +406,9 @@ table { max-width: 100%; }
   body.home .w3-dropdown-content { max-width: calc(100vw - 32px); }
   body.home .w3-bar-item, body.home .w3-button { font-size: 16px; }
 }
+
+/* verhoudingstabel in antwoorden van rekenvragen */
+.rekentabel { width: auto; max-width: 100%; margin: 8px 0; }
+.rekentabel th, .rekentabel td { padding: 6px 8px; text-align: center; font-size: 15px; overflow-wrap: normal; word-break: normal; }
+.rekentabel th:first-child, .rekentabel td:first-child { text-align: left; }
+.rekenregel { margin-top: 8px; font-weight: bold; }

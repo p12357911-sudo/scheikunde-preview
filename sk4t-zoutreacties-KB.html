@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<title>Zoutreacties - 123 school</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="123school.css">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<!-- Navbar -->
+<div w3-include-html="navbar.html"></div>
+</br>
+
+<!-- Accordion Knowledge Bank -->
+<div class="w3-container">
+
+<h2>Zoutreacties</h2>
+<p>Test je kennis door je antwoord in te typen en te vergelijken met het juiste antwoord, door te klikken op de vraag.</p>
+<p>Deze begrippen en berekeningen leer je door te oefenen. Alleen bij een vraag waar een Binas-tabel bij staat, gebruik je Binas.</p>
+
+<div>
+  <button onclick='myFunction("Demo1", this)' class='vraag-knop'> Wat is een neerslagreactie?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is een neerslagreactie?" placeholder='Type hier je antwoord'>
+  <div id="Demo1" class='w3-hide w3-container antwoord-box'>
+    <p> Twee oplossingen reageren met elkaar en er ontstaat een vaste stof</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo2", this)' class='vraag-knop'> Wat is een neerslag?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is een neerslag?" placeholder='Type hier je antwoord'>
+  <div id="Demo2" class='w3-hide w3-container antwoord-box'>
+    <p> Een vaste stof die ontstaat in een oplossing en naar beneden zakt</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo3", this)' class='vraag-knop'> Hoe kun je voorspellen of er een neerslag ontstaat als je twee zoutoplossingen mengt?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoe kun je voorspellen of er een neerslag ontstaat als je twee zoutoplossingen mengt?" placeholder='Type hier je antwoord'>
+  <div id="Demo3" class='w3-hide w3-container antwoord-box'>
+    <p> Je zoekt in Binas tabel 35 of een combinatie van een positief ion en een negatief ion slecht oplosbaar is</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo4", this)' class='vraag-knop'> Is AgCl goed of slecht oplosbaar in water? (gebruik BINAS tabel 35)</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Is AgCl goed of slecht oplosbaar in water? (gebruik BINAS tabel 35)" placeholder='Type hier je antwoord'>
+  <div id="Demo4" class='w3-hide w3-container antwoord-box'>
+    <p> Slecht oplosbaar</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo5", this)' class='vraag-knop'> Is BaSO<sub>4</sub> goed of slecht oplosbaar in water? (gebruik BINAS tabel 35)</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Is BaSO4 goed of slecht oplosbaar in water? (gebruik BINAS tabel 35)" placeholder='Type hier je antwoord'>
+  <div id="Demo5" class='w3-hide w3-container antwoord-box'>
+    <p> Slecht oplosbaar</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo6", this)' class='vraag-knop'> Is NaCl goed of slecht oplosbaar in water? (gebruik BINAS tabel 35)</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Is NaCl goed of slecht oplosbaar in water? (gebruik BINAS tabel 35)" placeholder='Type hier je antwoord'>
+  <div id="Demo6" class='w3-hide w3-container antwoord-box'>
+    <p> Goed oplosbaar</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo7", this)' class='vraag-knop'> Welke ionen zorgen er altijd voor dat een zout goed oplost?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welke ionen zorgen er altijd voor dat een zout goed oplost?" placeholder='Type hier je antwoord'>
+  <div id="Demo7" class='w3-hide w3-container antwoord-box'>
+    <p> Na<sup>+</sup>, K<sup>+</sup>, NH<sub>4</sub><sup>+</sup> en NO<sub>3</sub><sup>−</sup>. Een zout met een van deze ionen lost goed op</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo8", this)' class='vraag-knop'> Wat zijn tribune-ionen?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat zijn tribune-ionen?" placeholder='Type hier je antwoord'>
+  <div id="Demo8" class='w3-hide w3-container antwoord-box'>
+    <p> Ionen die niet meedoen aan de reactie en opgelost blijven</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo9", this)' class='vraag-knop'> Je mengt oplossingen van loodnitraat (Pb(NO<sub>3</sub>)<sub>2</sub>) en kaliumjodide (KI). Er ontstaat een neerslag van PbI<sub>2</sub>. Welke ionen zijn de tribune-ionen?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je mengt oplossingen van loodnitraat (Pb(NO3)2) en kaliumjodide (KI). Er ontstaat een neerslag van PbI2. Welke ionen zijn de tribune-ionen?" placeholder='Type hier je antwoord'>
+  <div id="Demo9" class='w3-hide w3-container antwoord-box'>
+    <p> K<sup>+</sup> en NO<sub>3</sub><sup>−</sup></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo10", this)' class='vraag-knop'> Schrijf de reactievergelijking op van het ontstaan van het neerslag loodjodide uit ionen.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Schrijf de reactievergelijking op van het ontstaan van het neerslag loodjodide uit ionen." placeholder='Type hier je antwoord'>
+  <div id="Demo10" class='w3-hide w3-container antwoord-box'>
+    <p> Pb<sup>2+</sup> (aq) + 2 I<sup>−</sup> (aq) → PbI<sub>2</sub> (s)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo11", this)' class='vraag-knop'> Je mengt zilvernitraat en natriumchloride. Wat is de reactievergelijking van het neerslag dat ontstaat?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je mengt zilvernitraat en natriumchloride. Wat is de reactievergelijking van het neerslag dat ontstaat?" placeholder='Type hier je antwoord'>
+  <div id="Demo11" class='w3-hide w3-container antwoord-box'>
+    <p> Ag<sup>+</sup> (aq) + Cl<sup>−</sup> (aq) → AgCl (s)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo12", this)' class='vraag-knop'> Je mengt bariumchloride (BaCl<sub>2</sub>) en natriumsulfaat (Na<sub>2</sub>SO<sub>4</sub>). Welk neerslag ontstaat?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je mengt bariumchloride (BaCl2) en natriumsulfaat (Na2SO4). Welk neerslag ontstaat?" placeholder='Type hier je antwoord'>
+  <div id="Demo12" class='w3-hide w3-container antwoord-box'>
+    <p> Bariumsulfaat</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo13", this)' class='vraag-knop'> Schrijf de volledige reactievergelijking op voor het mengen van BaCl<sub>2</sub> (aq) en Na<sub>2</sub>SO<sub>4</sub> (aq).</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Schrijf de volledige reactievergelijking op voor het mengen van BaCl2 (aq) en Na2SO4 (aq)." placeholder='Type hier je antwoord'>
+  <div id="Demo13" class='w3-hide w3-container antwoord-box'>
+    <p> BaCl<sub>2</sub> (aq) + Na<sub>2</sub>SO<sub>4</sub> (aq) → BaSO<sub>4</sub> (s) + 2 NaCl (aq)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo14", this)' class='vraag-knop'> Het neerslag bariumsulfaat bestaat uit ionen in een rooster. Hoe schrijf je dat neerslag op in een reactievergelijking?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Het neerslag bariumsulfaat bestaat uit ionen in een rooster. Hoe schrijf je dat neerslag op in een reactievergelijking?" placeholder='Type hier je antwoord'>
+  <div id="Demo14" class='w3-hide w3-container antwoord-box'>
+    <p> Ba<sup>2+</sup>SO<sub>4</sub><sup>2−</sup> (s), of kortweg BaSO<sub>4</sub> (s)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo15", this)' class='vraag-knop'> Schrijf de reactievergelijking op van het ontstaan van het neerslag calciumcarbonaat uit ionen.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Schrijf de reactievergelijking op van het ontstaan van het neerslag calciumcarbonaat uit ionen." placeholder='Type hier je antwoord'>
+  <div id="Demo15" class='w3-hide w3-container antwoord-box'>
+    <p> Ca<sup>2+</sup> (aq) + CO<sub>3</sub><sup>2−</sup> (aq) → CaCO<sub>3</sub> (s)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo16", this)' class='vraag-knop'> Welke ionen zorgen ervoor dat water hard is?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welke ionen zorgen ervoor dat water hard is?" placeholder='Type hier je antwoord'>
+  <div id="Demo16" class='w3-hide w3-container antwoord-box'>
+    <p> Ca<sup>2+</sup> en Mg<sup>2+</sup> ionen</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo17", this)' class='vraag-knop'> Waaruit bestaat kalkaanslag in een waterkoker?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Waaruit bestaat kalkaanslag in een waterkoker?" placeholder='Type hier je antwoord'>
+  <div id="Demo17" class='w3-hide w3-container antwoord-box'>
+    <p> CaCO<sub>3</sub></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo18", this)' class='vraag-knop'> Je voegt soda (Na<sub>2</sub>CO<sub>3</sub>) toe aan hard water. Wat gebeurt er met de Ca<sup>2+</sup> ionen?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je voegt soda (Na2CO3) toe aan hard water. Wat gebeurt er met de Ca2+ ionen?" placeholder='Type hier je antwoord'>
+  <div id="Demo18" class='w3-hide w3-container antwoord-box'>
+    <p> Ze vormen met CO<sub>3</sub><sup>2−</sup> een neerslag van CaCO<sub>3</sub> en zijn uit het water</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo19", this)' class='vraag-knop'> Hoe kun je Pb<sup>2+</sup> ionen uit afvalwater halen?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoe kun je Pb2+ ionen uit afvalwater halen?" placeholder='Type hier je antwoord'>
+  <div id="Demo19" class='w3-hide w3-container antwoord-box'>
+    <p> Een oplossing toevoegen waarmee een slecht oplosbaar loodzout ontstaat (een neerslag) en dan filtreren</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo20", this)' class='vraag-knop'> Welke reactievergelijking beschrijft het verwijderen van Cr<sup>3+</sup> ionen met kalkwater (OH<sup>−</sup> ionen)?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welke reactievergelijking beschrijft het verwijderen van Cr3+ ionen met kalkwater (OH− ionen)?" placeholder='Type hier je antwoord'>
+  <div id="Demo20" class='w3-hide w3-container antwoord-box'>
+    <p> Cr<sup>3+</sup> (aq) + 3 OH<sup>−</sup> (aq) → Cr(OH)<sub>3</sub> (s)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo21", this)' class='vraag-knop'> Waarom kun je nitraat-ionen (NO<sub>3</sub><sup>−</sup>) niet als neerslag uit water halen?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Waarom kun je nitraat-ionen (NO3−) niet als neerslag uit water halen?" placeholder='Type hier je antwoord'>
+  <div id="Demo21" class='w3-hide w3-container antwoord-box'>
+    <p> Alle nitraten zijn goed oplosbaar, dus er ontstaat nooit een neerslag</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo22", this)' class='vraag-knop'> Hoe toon je chloride-ionen aan in een oplossing?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoe toon je chloride-ionen aan in een oplossing?" placeholder='Type hier je antwoord'>
+  <div id="Demo22" class='w3-hide w3-container antwoord-box'>
+    <p> Je voegt zilvernitraat toe; er ontstaat een wit neerslag van AgCl</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo23", this)' class='vraag-knop'> Hoe toon je sulfaat-ionen aan in een oplossing?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoe toon je sulfaat-ionen aan in een oplossing?" placeholder='Type hier je antwoord'>
+  <div id="Demo23" class='w3-hide w3-container antwoord-box'>
+    <p> Je voegt bariumchloride toe; er ontstaat een wit neerslag van BaSO<sub>4</sub></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo24", this)' class='vraag-knop'> Hoe toon je koolstofdioxide aan, en welke reactie vindt dan plaats?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoe toon je koolstofdioxide aan, en welke reactie vindt dan plaats?" placeholder='Type hier je antwoord'>
+  <div id="Demo24" class='w3-hide w3-container antwoord-box'>
+    <p> Je leidt het gas door kalkwater: het wordt troebel door het neerslag CaCO<sub>3</sub>. Ca(OH)<sub>2</sub> (aq) + CO<sub>2</sub> (g) → CaCO<sub>3</sub> (s) + H<sub>2</sub>O (l)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo25", this)' class='vraag-knop'> Welke twee oplossingen meng je om het slecht oplosbare zout zilverchloride te maken?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Welke twee oplossingen meng je om het slecht oplosbare zout zilverchloride te maken?" placeholder='Type hier je antwoord'>
+  <div id="Demo25" class='w3-hide w3-container antwoord-box'>
+    <p> Zilvernitraat en natriumchloride</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo26", this)' class='vraag-knop'> Hoe scheid je het neerslag van de oplossing?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoe scheid je het neerslag van de oplossing?" placeholder='Type hier je antwoord'>
+  <div id="Demo26" class='w3-hide w3-container antwoord-box'>
+    <p> Door te filtreren; het neerslag blijft achter als residu</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo27", this)' class='vraag-knop'> Hoe krijg je het opgeloste zout (met de tribune-ionen) uit het filtraat terug?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoe krijg je het opgeloste zout (met de tribune-ionen) uit het filtraat terug?" placeholder='Type hier je antwoord'>
+  <div id="Demo27" class='w3-hide w3-container antwoord-box'>
+    <p> Door het filtraat in te dampen</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo28", this)' class='vraag-knop'> Je mengt oplossingen van natriumsulfaat en kaliumnitraat. Ontstaat er een neerslag?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Je mengt oplossingen van natriumsulfaat en kaliumnitraat. Ontstaat er een neerslag?" placeholder='Type hier je antwoord'>
+  <div id="Demo28" class='w3-hide w3-container antwoord-box'>
+    <p> Nee, alle mogelijke zouten lossen goed op</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo29", this)' class='vraag-knop'> Schrijf de volledige reactievergelijking op voor het mengen van Pb(NO<sub>3</sub>)<sub>2</sub> (aq) en KI (aq).</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Schrijf de volledige reactievergelijking op voor het mengen van Pb(NO3)2 (aq) en KI (aq)." placeholder='Type hier je antwoord'>
+  <div id="Demo29" class='w3-hide w3-container antwoord-box'>
+    <p> Pb(NO<sub>3</sub>)<sub>2</sub> (aq) + 2 KI (aq) → PbI<sub>2</sub> (s) + 2 KNO<sub>3</sub> (aq)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo30", this)' class='vraag-knop'> Wat is de formule van het zout dat bestaat uit Ca<sup>2+</sup> en PO<sub>4</sub><sup>3−</sup> ionen?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Wat is de formule van het zout dat bestaat uit Ca2+ en PO43− ionen?" placeholder='Type hier je antwoord'>
+  <div id="Demo30" class='w3-hide w3-container antwoord-box'>
+    <p> Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo31", this)' class='vraag-knop'> Schrijf de reactievergelijking op voor het oplossen van calciumchloride in water.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Schrijf de reactievergelijking op voor het oplossen van calciumchloride in water." placeholder='Type hier je antwoord'>
+  <div id="Demo31" class='w3-hide w3-container antwoord-box'>
+    <p> CaCl<sub>2</sub> (s) → Ca<sup>2+</sup> (aq) + 2 Cl<sup>−</sup> (aq)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo32", this)' class='vraag-knop'> Schrijf de reactievergelijking op voor het oplossen van aluminiumsulfaat (Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>) in water.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Schrijf de reactievergelijking op voor het oplossen van aluminiumsulfaat (Al2(SO4)3) in water." placeholder='Type hier je antwoord'>
+  <div id="Demo32" class='w3-hide w3-container antwoord-box'>
+    <p> Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub> (s) → 2 Al<sup>3+</sup> (aq) + 3 SO<sub>4</sub><sup>2−</sup> (aq)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo33", this)' class='vraag-knop'> Schrijf de reactievergelijking op voor het oplossen van natriumcarbonaat in water.</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Schrijf de reactievergelijking op voor het oplossen van natriumcarbonaat in water." placeholder='Type hier je antwoord'>
+  <div id="Demo33" class='w3-hide w3-container antwoord-box'>
+    <p> Na<sub>2</sub>CO<sub>3</sub> (s) → 2 Na<sup>+</sup> (aq) + CO<sub>3</sub><sup>2−</sup> (aq)</p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo34", this)' class='vraag-knop'> Hoeveel ionen ontstaan er als één formule-eenheid CaCl<sub>2</sub> oplost?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoeveel ionen ontstaan er als één formule-eenheid CaCl2 oplost?" placeholder='Type hier je antwoord'>
+  <div id="Demo34" class='w3-hide w3-container antwoord-box'>
+    <p> 3 ionen: 1 Ca<sup>2+</sup> en 2 Cl<sup>−</sup></p>
+  </div>
+</div>
+
+<div>
+  <button onclick='myFunction("Demo35", this)' class='vraag-knop'> Hoe zie je in een reactievergelijking dat er een neerslag ontstaat?</button>
+  <input class='w3-input w3-border w3-round' name='first' type='text' aria-label="Jouw antwoord op: Hoe zie je in een reactievergelijking dat er een neerslag ontstaat?" placeholder='Type hier je antwoord'>
+  <div id="Demo35" class='w3-hide w3-container antwoord-box'>
+    <p> Achter de formule van de stof staat (s), bijvoorbeeld AgCl (s)</p>
+  </div>
+</div>
+
+</div>
+
+<!-- Next button -->
+<div class="w3-container w3-padding-64 w3-center">
+<a class="w3-button knop-blauw" href="sk4t-zoutreacties-KB.html">Opnieuw oefenen</a>
+</div>
+<!-- Footer -->
+<div class="w3-container">
+</br>
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <p>Powered by <a href="https://www.peter-pan.nl" target="_blank">peter-pan</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>   
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+</div>
+
+<script src="school.js"></script>
+</body>
+</html>
