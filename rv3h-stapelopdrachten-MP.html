@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Stapelopdrachten - 123 school</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="123school.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!-- Navbar -->
+    <div w3-include-html="navbar.html"></div>
+
+    <!-- Question container -->
+    <div class="w3-container w3-padding-64 w3-center" id="scheikunde">
+        <em>Stapelopdrachten</em>
+        <p>Bij een stapelopdracht heb je meerdere stappen nodig om bij het antwoord te komen. In de tip staat hoeveel stappen je nodig hebt. Rond pas aan het eind af.</p>
+        <div id="quiz"></div>
+        <button id="submit" class="w3-button knop-blauw">Controleer nu</button>
+        <div id="results" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+        <p>Powered by <a href="https://www.123dakschoon.nl" target="_blank">peter-pan</a></p>
+        <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>
+            <a class="w3-button w3-theme" href="#myPage">
+                <span class="w3-xlarge"><i class="fa fa-chevron-circle-up"></i></span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        var myQuestions = [
+            {
+                question: "Een oplossing heeft een concentratie van 12 g/L. Hoeveel gram opgeloste stof zit er in 150 mL van deze oplossing? Rond af op 2 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "18,00 g",
+                    b: "80,00 g",
+                    c: "1,80 g",
+                    d: "0,18 g"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een oplossing heeft een concentratie van 0,45 g/L. Hoeveel gram opgeloste stof zit er in 60 mL van deze oplossing? Rond af op 3 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "0,027 g",
+                    b: "0,003 g",
+                    c: "0,270 g",
+                    d: "0,028 g"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Een vloeistof (glycerol) heeft een dichtheid van 1,26 g/mL. Wat is de massa in kg van 45 mL van deze vloeistof? Rond af op 3 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "0,057 kg",
+                    b: "0,036 kg",
+                    c: "0,006 kg",
+                    d: "0,567 kg"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Een vloeistof heeft een dichtheid van 0,79 g/mL. Wat is het volume in L van 80 g van deze vloeistof? Rond af op 3 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "0,063 L",
+                    b: "1,013 L",
+                    c: "0,010 L",
+                    d: "0,101 L"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Je hebt 25 mL ethanol met een dichtheid van 0,79 g/mL. De molaire massa is 46,0 g/mol. Hoeveel mol ethanol is dat? Rond af op 3 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "0,429 mol",
+                    b: "0,688 mol",
+                    c: "0,543 mol",
+                    d: "19,750 mol"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Je hebt 10 mL ethanol met een dichtheid van 0,92 g/mL. De molaire massa is 60,0 g/mol. Hoeveel mol ethanol is dat? Rond af op 3 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "0,153 mol",
+                    b: "0,181 mol",
+                    c: "9,200 mol",
+                    d: "0,167 mol"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Je hebt 1,5 mol water. De molaire massa is 18,0 g/mol en de dichtheid is 1,00 g/mL. Welk volume in mL heeft deze hoeveelheid? Rond af op 1 decimaal. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "27,0 mL",
+                    b: "27,1 mL",
+                    c: "270,0 mL",
+                    d: "2,7 mL"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Je hebt 0,25 mol van een stof met een molaire massa van 58,5 g/mol. Hoeveel kg is dat? Rond af op 4 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "0,0146 kg",
+                    b: "0,0147 kg",
+                    c: "0,1463 kg",
+                    d: "0,0015 kg"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Je hebt 40 mL oplossing met een concentratie van 0,15 mol/L. Hoeveel mol opgeloste stof zit erin? Rond af op 4 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "0,0060 mol",
+                    b: "0,0061 mol",
+                    c: "0,0006 mol",
+                    d: "0,0600 mol"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Hoeveel mL oplossing is nodig om 0,25 mol op te lossen als de concentratie 0,20 mol/L moet zijn? Rond af op een geheel getal. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "800 mL",
+                    b: "12 500 mL",
+                    c: "50 mL",
+                    d: "1250 mL"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Je lost natriumchloride af in water tot 500 mL oplossing met een concentratie van 0,15 mol/L. De molaire massa van natriumchloride is 58,5 g/mol. Hoeveel gram natriumchloride heb je nodig? Rond af op 2 decimalen. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "0,08 g",
+                    b: "0,44 g",
+                    c: "43,88 g",
+                    d: "4,39 g"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Je lost 2,00 g natriumhydroxide (molaire massa 40,0 g/mol) op in water tot 250 mL oplossing. Wat is de concentratie in mol/L? Rond af op 3 decimalen. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "12,500 mol/L",
+                    b: "0,050 mol/L",
+                    c: "2,000 mol/L",
+                    d: "0,200 mol/L"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Een oplossing van 300 g bevat 5,0 massaprocent natriumchloride. De molaire massa van natriumchloride is 58,5 g/mol. Hoeveel mol natriumchloride zit er in de oplossing? Rond af op 2 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "25,64 mol",
+                    b: "5,13 mol",
+                    c: "2,56 mol",
+                    d: "0,26 mol"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Een oplossing van 250 g bevat 12 massaprocent zout. Hoeveel gram water zit er in de oplossing? Rond af op 1 decimaal. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "280,0 g",
+                    b: "30,0 g",
+                    c: "220,0 g",
+                    d: "230,0 g"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een fietser legt 42 km af in 35 minuten. Wat is de gemiddelde snelheid in km/h? Rond af op 1 decimaal. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "0,8 km/h",
+                    b: "1,2 km/h",
+                    c: "72,0 km/h",
+                    d: "1470,0 km/h"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een auto rijdt met een snelheid van 108 km/h. Hoeveel meter legt de auto af in 15 seconden? (1 m/s = 3,6 km/h) Rond af op een geheel getal. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "5832 m",
+                    b: "7 m",
+                    c: "1620 m",
+                    d: "450 m"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Een lamp van 1500 W brandt 2,5 uur. Hoeveel kWh energie gebruikt de lamp? (1 kW = 1000 W) Rond af op 2 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "0,38 kWh",
+                    b: "37,50 kWh",
+                    c: "0,60 kWh",
+                    d: "3,75 kWh"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Je hebt 8,0 g O<sub>2</sub> (molaire massa 32,0 g/mol). Het molair volume van een gas is 24,5 L/mol. Welk volume in L heeft dit gas? Rond af op 1 decimaal. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "61,3 L",
+                    b: "98,0 L",
+                    c: "6,1 L",
+                    d: "196,0 L"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een tablet bevat 500 mg van een stof met een molaire massa van 100,1 g/mol. Hoeveel mol van de stof zit er in het tablet? Rond af op 4 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "0,0005 mol",
+                    b: "0,0500 mol",
+                    c: "0,0051 mol",
+                    d: "0,0050 mol"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Van een stof heeft 30 mL een massa van 36 g. Wat is de massa van 45 mL van deze stof? Rond af op 1 decimaal. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "1620,0 g",
+                    b: "37,5 g",
+                    c: "51,0 g",
+                    d: "54,0 g"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Je mengt 200 mL water (1,00 g/mL) met 80 mL ethanol (0,79 g/mL). Wat is de totale massa van het mengsel in gram? Rond af op 1 decimaal. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "501,2 g",
+                    b: "200,0 g",
+                    c: "263,2 g",
+                    d: "280,0 g"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een gas (N<sub>2</sub>, molaire massa 28,0 g/mol) heeft een volume van 3,0 L. Het molair volume is 24,5 L/mol. Wat is de massa van het gas in gram? Rond af op 2 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "34,29 g",
+                    b: "0,11 g",
+                    c: "3,43 g",
+                    d: "84,00 g"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Je titreert 25,0 mL HCl-oplossing met NaOH-oplossing van 0,100 mol/L. Je hebt 20,0 mL NaOH-oplossing nodig. HCl en NaOH reageren in de molverhouding 1 : 1. Wat is de concentratie van de HCl-oplossing in mol/L? Rond af op 3 decimalen. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "0,002 mol/L",
+                    b: "0,080 mol/L",
+                    c: "0,125 mol/L",
+                    d: "0,800 mol/L"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Bij de reactie 2 H<sub>2</sub> + O<sub>2</sub> → 2 H<sub>2</sub>O reageert 8,0 g O<sub>2</sub>. De molaire massa van O<sub>2</sub> is 32,0 g/mol en van H<sub>2</sub>O is 18,0 g/mol. Hoeveel gram H<sub>2</sub>O is er nodig of ontstaat er? Rond af op 1 decimaal. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "16,0 g",
+                    b: "2,3 g",
+                    c: "9,0 g",
+                    d: "4,5 g"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Bij de reactie 2 Mg + O<sub>2</sub> → 2 MgO reageert 3,20 g O<sub>2</sub>. De molaire massa van O<sub>2</sub> is 32,0 g/mol en van MgO is 40,3 g/mol. Hoeveel gram MgO is er nodig of ontstaat er? Rond af op 1 decimaal. Tip: dit is een opdracht van 3 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "4,0 g",
+                    b: "6,4 g",
+                    c: "2,0 g",
+                    d: "8,1 g"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Een fietser legt 30 km af in 25 minuten. Wat is de gemiddelde snelheid in km/h? Rond af op 1 decimaal. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "750,0 km/h",
+                    b: "1,2 km/h",
+                    c: "0,8 km/h",
+                    d: "72,0 km/h"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Een tablet bevat 420 mg van een stof met een molaire massa van 60,0 g/mol. Hoeveel mol van de stof zit er in het tablet? Rond af op 4 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "0,0007 mol",
+                    b: "0,0070 mol",
+                    c: "0,0071 mol",
+                    d: "0,0700 mol"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Een gas (CH<sub>4</sub>, molaire massa 16,0 g/mol) heeft een volume van 5,6 L. Het molair volume is 24,5 L/mol. Wat is de massa van het gas in gram? Rond af op 2 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "3,66 g",
+                    b: "89,60 g",
+                    c: "0,35 g",
+                    d: "36,57 g"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Een lamp van 800 W brandt 3,0 uur. Hoeveel kWh energie gebruikt de lamp? (1 kW = 1000 W) Rond af op 2 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "2,40 kWh",
+                    b: "0,24 kWh",
+                    c: "24,00 kWh",
+                    d: "0,27 kWh"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Je hebt 15 mL glycerol met een dichtheid van 1,26 g/mL. De molaire massa is 92,0 g/mol. Hoeveel mol glycerol is dat? Rond af op 3 decimalen. Tip: dit is een opdracht van 2 stappen. Rond pas bij het eindantwoord af.",
+                answers: {
+                    a: "18,900 mol",
+                    b: "0,163 mol",
+                    c: "0,205 mol",
+                    d: "0,129 mol"
+                },
+                correctAnswer: 'c'
+            }
+        ];
+    </script>
+
+    <script src="school.js"></script>
+</body>
+</html>

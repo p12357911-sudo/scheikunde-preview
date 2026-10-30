@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Procenten en verhoudingen - 123 school</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="123school.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="https://www.w3schools.com/lib/w3data.js"></script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <!-- Navbar -->
+    <div w3-include-html="navbar.html"></div>
+
+    <!-- Question container -->
+    <div class="w3-container w3-padding-64 w3-center" id="scheikunde">
+        <em>Procenten en verhoudingen</em>
+        <p>Oefen het rekenen met procenten en verhoudingen. In elke vraag staat hoe je moet afronden.</p>
+        <div id="quiz"></div>
+        <button id="submit" class="w3-button knop-blauw">Controleer nu</button>
+        <div id="results" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+        <p>Powered by <a href="https://www.123dakschoon.nl" target="_blank">peter-pan</a></p>
+        <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+            <span class="w3-text w3-padding w3-teal w3-hide-small">Naar Top</span>
+            <a class="w3-button w3-theme" href="#myPage">
+                <span class="w3-xlarge"><i class="fa fa-chevron-circle-up"></i></span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        var myQuestions = [
+            {
+                question: "Hoe bereken je het massapercentage van een stof in een mengsel?",
+                answers: {
+                    a: "massa van de stof × totale massa : 100%",
+                    b: "massa van de stof − totale massa",
+                    c: "totale massa : massa van de stof × 100%",
+                    d: "massa van de stof : totale massa × 100%"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Een mengsel bevat 20% van een stof. Hoeveel gram van die stof zit er in 100 g van het mengsel?",
+                answers: {
+                    a: "2 g",
+                    b: "20 g",
+                    c: "0,2 g",
+                    d: "200 g"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Een brood van 800 g bevat 1,5% zout. Hoeveel gram zout zit er in het brood? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "12 g",
+                    b: "1200 g",
+                    c: "1,2 g",
+                    d: "533,33 g"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Een fles van 750 mL bevat 12% alcohol. Hoeveel mL alcohol zit er in de fles? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "90 mL",
+                    b: "9 mL",
+                    c: "62,5 mL",
+                    d: "9000 mL"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Een pak melk van 1000 mL bevat 3,5% vet. Hoeveel mL vet zit er in het pak? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "3500 mL",
+                    b: "285,71 mL",
+                    c: "35 mL",
+                    d: "3,5 mL"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een mengsel van 340 g bevat 8,5% suiker. Hoeveel gram suiker zit er in het mengsel? Rond af op een geheel getal.",
+                answers: {
+                    a: "40 g",
+                    b: "2890 g",
+                    c: "29 g",
+                    d: "2,890 g"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een shampoo van 250 g bevat 4% zeep. Hoeveel gram zeep zit er in de shampoo? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "62,5 g",
+                    b: "1000 g",
+                    c: "10 g",
+                    d: "1 g"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een mengsel van 60 g bevat 15 g zout. Bereken het percentage zout in het mengsel. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "900 %",
+                    b: "400 %",
+                    c: "0,25 %",
+                    d: "25 %"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Een mengsel van 250 mL bevat 45 mL alcohol. Bereken het percentage alcohol in het mengsel. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "555,56 %",
+                    b: "18 %",
+                    c: "11 250 %",
+                    d: "0,18 %"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Een mengsel van 40 g bevat 7 g suiker. Bereken het percentage suiker in het mengsel. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "0,175 %",
+                    b: "571,43 %",
+                    c: "280 %",
+                    d: "17,5 %"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Een mengsel van 30 g bevat 2 g koper. Bereken het percentage koper in het mengsel. Rond af op 1 decimaal.",
+                answers: {
+                    a: "6,7 %",
+                    b: "0,067 %",
+                    c: "60 %",
+                    d: "1500,0 %"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Een mengsel van 36 g bevat 9 g tin. Bereken het percentage tin in het mengsel. Je hoeft niet af te ronden.",
+                answers: {
+                    a: "25 %",
+                    b: "400 %",
+                    c: "0,25 %",
+                    d: "324 %"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "In een brood zit 12 g zout. Dat is 1,5% van het brood. Hoeveel gram weegt het brood? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "0,18 g",
+                    b: "8 g",
+                    c: "800 g",
+                    d: "18 g"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "In een fles zit 30 mL alcohol. Dat is 12% van de fles. Hoeveel mL is de inhoud van de fles? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "360 mL",
+                    b: "3,6 mL",
+                    c: "250 mL",
+                    d: "2,5 mL"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "In een mengsel zit 9 g koper. Dat is 2% van het mengsel. Hoeveel gram weegt het mengsel? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "450 g",
+                    b: "4,5 g",
+                    c: "18 g",
+                    d: "0,18 g"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Schrijf 35% als decimaal getal.",
+                answers: {
+                    a: "3,5",
+                    b: "35",
+                    c: "0,35",
+                    d: "0,035"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Schrijf 4,5% als decimaal getal.",
+                answers: {
+                    a: "0,45",
+                    b: "0,045",
+                    c: "4,5",
+                    d: "0,0045"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Schrijf 0,08 als percentage.",
+                answers: {
+                    a: "0,08%",
+                    b: "0,8%",
+                    c: "80%",
+                    d: "8%"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Een hoeveelheid van 150 g neemt met 20% toe. Hoeveel gram is het daarna? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "1800 g",
+                    b: "120 g",
+                    c: "180 g",
+                    d: "30 g"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een hoeveelheid van 80 mL neemt met 15% af. Hoeveel mL is het daarna? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "12 mL",
+                    b: "680 mL",
+                    c: "68 mL",
+                    d: "92 mL"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een oplossing van 400 mL verdampt voor 30%. Hoeveel mL is er daarna over? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "520 mL",
+                    b: "280 mL",
+                    c: "120 mL",
+                    d: "2800 mL"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Hoeveel is 10% van 350 g?",
+                answers: {
+                    a: "350 g",
+                    b: "35 g",
+                    c: "3500 g",
+                    d: "3,5 g"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Hoeveel is 50% van 64 mL?",
+                answers: {
+                    a: "32 mL",
+                    b: "64 mL",
+                    c: "3,2 mL",
+                    d: "320 mL"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Hoeveel is 1% van 2400 g?",
+                answers: {
+                    a: "240 g",
+                    b: "2,4 g",
+                    c: "0,24 g",
+                    d: "24 g"
+                },
+                correctAnswer: 'd'
+            },
+            {
+                question: "Koper en zuurstof reageren in de massaverhouding 4 : 1. Hoeveel gram zuurstof reageert met 20 g koper? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "5 g",
+                    b: "80 g",
+                    c: "24 g",
+                    d: "16 g"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Magnesium en zuurstof reageren in de massaverhouding 3 : 2. Hoeveel gram zuurstof reageert met 12 g magnesium? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "10 g",
+                    b: "4,5 g",
+                    c: "8 g",
+                    d: "18 g"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een mengsel bestaat uit zand en zout in de massaverhouding 5 : 2. Het mengsel weegt 140 g. Hoeveel gram zout zit er in? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "40 g",
+                    b: "100 g",
+                    c: "56 g",
+                    d: "28 g"
+                },
+                correctAnswer: 'a'
+            },
+            {
+                question: "Een recept gebruikt 3 g zout op 200 g water. Hoeveel gram zout hoort bij 500 g water? Je hoeft niet af te ronden.",
+                answers: {
+                    a: "1200 g",
+                    b: "7,5 g",
+                    c: "15 g",
+                    d: "1,2 g"
+                },
+                correctAnswer: 'b'
+            },
+            {
+                question: "Schrijf de massaverhouding 12 g : 8 g als eenvoudige verhouding.",
+                answers: {
+                    a: "2 : 3",
+                    b: "4 : 3",
+                    c: "3 : 2",
+                    d: "6 : 4"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een mengsel bestaat uit zand en zout in de massaverhouding 5 : 2. Welk deel van het mengsel is zout?",
+                answers: {
+                    a: "5/7",
+                    b: "2/5",
+                    c: "2/7",
+                    d: "2/3"
+                },
+                correctAnswer: 'c'
+            },
+            {
+                question: "Een mengsel bestaat uit 15 g zand en 6 g zout. Wat is de massaverhouding zand : zout?",
+                answers: {
+                    a: "2 : 5",
+                    b: "15 : 6",
+                    c: "3 : 1",
+                    d: "5 : 2"
+                },
+                correctAnswer: 'd'
+            }
+        ];
+    </script>
+
+    <script src="school.js"></script>
+</body>
+</html>
