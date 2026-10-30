@@ -454,6 +454,11 @@ table { max-width: 100%; }
 /* Rekenvaardigheden: korte uitwerking onder het antwoord */
 .antwoord-box .uitleg { font-size: 10pt; color: #111111; margin-top: 0; }
 
+/* Eindantwoord in het antwoordvak: duidelijk herkenbaar (alleen het antwoord is vet) */
+.antwoord-box > p.eindantwoord { font-weight: bold; color: #003A5C; margin: 10px 0 6px 0; font-size: 12pt; }
+.antwoord-box > p.eindantwoord::before { content: "Antwoord:\00a0"; }
+.antwoord-box > p.eindantwoord + p.uitleg { margin-top: 0; }
+
 /* KB-vragen: elke vraag, het invoerveld, de terugkoppeling en het antwoord staan samen in één kader */
 .kb-item {
   border: 1.3pt solid #003A5C;
