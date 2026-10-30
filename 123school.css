@@ -56,6 +56,7 @@ a:focus-visible {
 #kb-uitslag { font-weight: bold; margin-top: 16px; color: #111111; }
 input.kb-goed { background-color: #E6F4EA; border: 2px solid #14532d; }
 input.kb-fout { background-color: #FBEDED; border: 2px solid #7f1d1d; }
+input.kb-half { background-color: #FFF4CE; border: 2px solid #8a5200; }
 .kb-oordeel { margin: 6px 0; font-weight: 700; }
 .uitslag-zelf { color: #111111; font-weight: 400; }
 
@@ -108,6 +109,9 @@ input.kb-fout { background-color: #FBEDED; border: 2px solid #7f1d1d; }
 }
 .uitslag-goed { color: #14532d; }
 .uitslag-fout { color: #7f1d1d; }
+.uitslag-half { color: #8a5200; }
+.kb-tip { color: #111111; font-weight: 400; }
+#ai-intro { color: #111111; }
 /* Meerkeuze na nakijken: gekozen goed antwoord groen en vet, gekozen fout antwoord rood en rustig */
 .answers label.optie-goed, .answers label.optie-goed:has(input:checked) { color: #14532d; font-weight: 700; background-color: #E6F4EA; border-radius: 4px; }
 .answers label.optie-fout, .answers label.optie-fout:has(input:checked) { color: #7f1d1d; font-weight: 400; text-decoration: line-through; text-decoration-thickness: 1px; background-color: #FBEDED; border-radius: 4px; }
@@ -149,6 +153,19 @@ body.heeft-zweefknop footer { padding-bottom: 96px; }
 .zweefknop[hidden] { display: none; }
 @media (max-width: 600px) {
   .zweefknop { padding: 10px 16px; right: 12px; bottom: 12px; }
+}
+
+/* KB-pagina's: de knop zit hoger, dichter bij de vragen (niet op de onderrand van het scherm) */
+body.zweef-hoog .zweefknop {
+  bottom: 22vh;
+  bottom: max(88px, 22vh);
+  right: 24px;
+  right: max(24px, env(safe-area-inset-right));
+}
+body.zweef-hoog footer { padding-bottom: 24px; }
+@media (max-width: 600px) {
+  /* op een telefoon: kleiner en net boven de onderkant, zodat de invoervelden vrij blijven */
+  body.zweef-hoog .zweefknop { bottom: 84px; right: 10px; padding: 10px 14px; font-size: 15px; }
 }
 
 /* ===== Meerkeuzepagina's (MP): was eerst per pagina een eigen <style> ===== */
