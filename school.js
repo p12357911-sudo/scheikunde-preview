@@ -416,9 +416,21 @@ klaar(function () {
   zweef.addEventListener('click', function () { origineel.click(); });
   document.body.appendChild(zweef);
   document.body.classList.add('heeft-zweefknop', 'zweef-hoog');
-  /* Op een smal scherm schuift het toetsenbord over de pagina: tijdens het typen gaat de zwevende knop weg, zodat hij geen invoerveld bedekt */
-  document.addEventListener('focusin', function (e) { if (e.target && e.target.matches && e.target.matches('input[type=text]')) { document.body.classList.add('zweef-typen'); } });
+  /* Bedekt de zwevende knop het invoerveld waarin je typt (toetsenbord op een smal scherm)? Dan gaat de knop even weg. */
+  function knopBedektInvoer() {
+    var a = document.activeElement;
+    var tekstveld = a && a.matches && a.matches('input[type=text]');
+    var weg = false;
+    if (tekstveld && !zweef.hidden) {
+      document.body.classList.remove('zweef-typen');
+      var k = zweef.getBoundingClientRect(), r = a.getBoundingClientRect();
+      weg = k.width > 0 && !(k.right < r.left || k.left > r.right || k.bottom < r.top || k.top > r.bottom);
+    }
+    document.body.classList.toggle('zweef-typen', weg);
+  }
+  document.addEventListener('focusin', function () { setTimeout(knopBedektInvoer, 350); });
   document.addEventListener('focusout', function () { document.body.classList.remove('zweef-typen'); });
+  if (window.visualViewport) { window.visualViewport.addEventListener('resize', knopBedektInvoer); }
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (items) { zweef.hidden = items[0].isIntersecting; }).observe(origineel);
   }
