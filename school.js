@@ -427,4 +427,9 @@ klaar(function () {
     var ouder = knoppen[i].parentNode;
     if (ouder && ouder !== document.body && ouder.tagName === 'DIV') { ouder.classList.add('kb-item'); }
   }
+  /* kort eindantwoord in het antwoordvak: markeren, zodat het in 123school.css opvalt (voorvoegsel 'Antwoord:' via CSS, tekst blijft ongewijzigd) */
+  var eerste = document.querySelectorAll('.antwoord-box > p:first-child');
+  for (var j = 0; j < eerste.length; j++) {
+    if (!eerste[j].classList.contains('uitleg') && eerste[j].textContent.replace(/\s+/g, ' ').trim().length <= 60) { eerste[j].classList.add('eindantwoord'); }
+  }
 });
