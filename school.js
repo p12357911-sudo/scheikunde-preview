@@ -225,28 +225,38 @@ function kbBeoordeelBox(ingevuld, box) {
   return eerste;
 }
 
-/* Geeft { oordeel: 'goed' | 'fout' | 'zelf', hint: '' } */
+/* Geeft { oordeel: 'goed' | 'half' | 'fout' | 'zelf', hint: '', numeriek: true/false }
+   half = de waarde klopt, maar de eenheid of de afronding niet (lokaal bepaald, zonder AI) */
+/* Is dit een getal met hooguit een korte eenheid ("3,40 mol", "5 g/cm3") en niet een zin als "10 N naar rechts"? */
+function kbIsGetalMetEenheid(verwacht, v) {
+  if (!v || v.eenheid.length > 7 || /[()]/.test(verwacht)) { return false; }
+  var rest = String(verwacht).replace(/[x\u00d7\u00b7*]\s*10\s*\^?\s*[-\u2212]?\s*[0-9\u2070-\u2079\u207b]+/i, ' ').replace(/^[\s\-\u2212]*[0-9]+(?:[.,][0-9]+)?(?:\s*\/\s*[0-9]+)?/, ' ');
+  return rest.trim().split(/\s+/).filter(function (t) { return t; }).length <= 2;
+}
 function kbBeoordeel(ingevuld, verwacht) {
   var v = kbGetal(verwacht);
-  if (v) {
-    var i = kbGetal(ingevuld);
-    if (i && i.getal === v.getal && (i.eenheid === '' || v.eenheid === '' || i.eenheid === v.eenheid)) { return { oordeel: 'goed', hint: '' }; }
-    var hint = '';
+  if (kbIsGetalMetEenheid(verwacht, v)) {
+    var i = kbGetal(String(ingevuld).replace(/^\s*[A-Za-z\u0370-\u03ff][A-Za-z0-9_]{0,3}\s*=\s*/, ''));
+    if (i && i.getal === v.getal && (i.eenheid === '' || v.eenheid === '' || i.eenheid.replace(/x/g, '') === v.eenheid.replace(/x/g, ''))) { return { oordeel: 'goed', hint: '', numeriek: true }; }
+    if (i && i.getal === v.getal) { return { oordeel: 'half', hint: 'De waarde klopt, controleer de eenheid.', numeriek: true }; }
     if (i && i.getal !== v.getal && Math.abs(kbWaarde(i.getal) - kbWaarde(v.getal)) < 1e-12 * Math.max(1, Math.abs(kbWaarde(v.getal))) && v.getal.indexOf('/') === -1) {
-      hint = 'Let op het aantal decimalen of significante cijfers.';
+      return { oordeel: 'half', hint: 'De waarde klopt, let op het aantal decimalen of significante cijfers.', numeriek: true };
     }
-    return { oordeel: 'fout', hint: hint };
+    return { oordeel: 'fout', hint: '', numeriek: true };
   }
-  var tekst = function (x) { return x.toLowerCase().replace(/[^a-z0-9\u00e0-\u00ff]/g, ''); };
+  /* letters, cijfers, Griekse letters en rekentekens tellen mee; spaties en leestekens niet */
+  var tekst = function (x) { return kbNormaal(x).replace(/[^a-z0-9\u00e0-\u00ff\u0370-\u03ff=+\-\u2212*:\/\u00d7\u00b7<>%]/g, ''); };
   var ruw = verwacht.replace(/\^/g, '');
-  var opties = [ruw, ruw.replace(/\([^)]*\)/g, '')].concat(ruw.split(/\s+of\s+|\//));
+  var delen = ruw.indexOf('=') === -1 ? ruw.split(/\s+of\s+|\//).filter(function (d) { return tekst(d).length >= 4; }) : [];
+  var opties = [ruw, ruw.replace(/\([^)]*\)/g, '')].concat(delen);
   opties = opties.map(tekst).filter(function (o) { return o.length > 0; });
-  if (!opties.length || tekst(ruw).length > 30) { return { oordeel: 'zelf', hint: '' }; }
-  return { oordeel: opties.indexOf(tekst(ingevuld)) !== -1 ? 'goed' : 'fout', hint: '' };
+  if (!opties.length) { return { oordeel: 'zelf', hint: '', numeriek: false }; }
+  if (opties.indexOf(tekst(ingevuld)) !== -1) { return { oordeel: 'goed', hint: '', numeriek: false }; }
+  if (tekst(ruw).length > 30) { return { oordeel: 'zelf', hint: '', numeriek: false }; }
+  return { oordeel: 'fout', hint: '', numeriek: false };
 }
 
 klaar(function () {
-  if (document.querySelector('script[src*="ai-nakijken"]')) { return; }
   var knoppen = Array.prototype.slice.call(document.querySelectorAll('button.vraag-knop'));
   var blokken = knoppen.map(function (k) { return k.parentNode; }).filter(function (b) {
     return b.querySelector('input[type=text]') && b.querySelector('.antwoord-box');
@@ -289,8 +299,44 @@ klaar(function () {
     blok.querySelector('input[type=text]').addEventListener('input', function () { wis(blok); sluit(blok); });
   });
 
+  var TITELS = { goed: '\u2713 Goed', half: '\u25CB Bijna goed', fout: '\u2717 Niet goed', zelf: 'Vergelijk zelf met het juiste antwoord', bezig: 'Wordt nagekeken met AI...' };
+  var KLASSEN = { goed: 'uitslag-goed', half: 'uitslag-half', fout: 'uitslag-fout', zelf: 'uitslag-zelf', bezig: 'uitslag-zelf' };
+  function toonOordeel(blok, oordeel, extra, openAntwoord) {
+    var inp = blok.querySelector('input[type=text]');
+    var box = blok.querySelector('.antwoord-box');
+    wis(blok);
+    var el = document.createElement('div');
+    el.className = 'kb-oordeel uitslag ' + KLASSEN[oordeel];
+    var kop = document.createElement('span');
+    kop.textContent = TITELS[oordeel];
+    el.appendChild(kop);
+    if (extra) {
+      var tip = document.createElement('span');
+      tip.className = 'kb-tip';
+      tip.textContent = ' ' + extra;
+      el.appendChild(tip);
+    }
+    inp.classList.remove('kb-half');
+    if (oordeel === 'goed' || oordeel === 'half' || oordeel === 'fout') {
+      inp.classList.add(oordeel === 'goed' ? 'kb-goed' : (oordeel === 'half' ? 'kb-half' : 'kb-fout'));
+      if (oordeel === 'fout') { inp.setAttribute('aria-invalid', 'true'); }
+    }
+    inp.parentNode.insertBefore(el, box);
+    var k = blok.querySelector('button.vraag-knop');
+    if (openAntwoord) {
+      if (box.className.indexOf('w3-show') === -1) { box.className += ' w3-show'; }
+      if (k) { k.setAttribute('aria-expanded', 'true'); }
+    } else {
+      sluit(blok);
+    }
+  }
+
+  var bezigMetAI = false;
   origineel.addEventListener('click', function () {
-    var ingevuld = 0, goed = 0, open = 0;
+    if (bezigMetAI) { return; }
+    var lijst = [];   /* alle ingevulde vragen */
+    var vragenAI = []; /* de vragen die de AI mag nakijken (alleen als ai-nakijken.js op de pagina staat) */
+    var ai = window.kbAI && typeof window.kbAI.nakijken === 'function' ? window.kbAI : null;
     blokken.forEach(function (blok) {
       if (blok.hidden) { return; }
       var inp = blok.querySelector('input[type=text]');
@@ -298,29 +344,81 @@ klaar(function () {
       var tekst = inp.value.replace(/\s+/g, ' ').trim();
       wis(blok);
       if (!tekst) { return; }
-      ingevuld++;
+      var verwacht = kbTekstVanAntwoord(box);
       var r = kbBeoordeelBox(tekst, box);
-      if (r.oordeel === 'goed') { goed++; }
-      var el = document.createElement('div');
-      el.className = 'kb-oordeel uitslag ' + (r.oordeel === 'goed' ? 'uitslag-goed' : (r.oordeel === 'fout' ? 'uitslag-fout' : 'uitslag-zelf'));
-      el.textContent = r.oordeel === 'goed' ? '\u2713 Goed' : (r.oordeel === 'fout' ? '\u2717 Niet goed' : 'Vergelijk zelf met het juiste antwoord');
-      if (r.hint) { el.textContent += '. ' + r.hint; }
-      if (r.oordeel !== 'zelf') {
-        inp.classList.add(r.oordeel === 'goed' ? 'kb-goed' : 'kb-fout');
-        if (r.oordeel === 'fout') { inp.setAttribute('aria-invalid', 'true'); }
+      var it = { blok: blok, tekst: tekst, verwacht: verwacht, r: r, oordeel: r.oordeel, extra: r.hint };
+      lijst.push(it);
+      if (ai && r.oordeel !== 'goed' && ai.komtInAanmerking({ local: r.oordeel, numeriek: r.numeriek, verwacht: verwacht, ingevuld: tekst })) {
+        var eerder = blok._kbAI && blok._kbAI.tekst === tekst ? blok._kbAI : null;
+        if (eerder) {
+          it.oordeel = eerder.verdict; it.extra = eerder.tip; it.klaar = true;
+        } else {
+          it.ai = true; vragenAI.push(it);
+        }
       }
-      inp.parentNode.insertBefore(el, box);
-      if (box.className.indexOf('w3-show') === -1) { box.className += ' w3-show'; }
-      var k = blok.querySelector('button.vraag-knop');
-      if (k) { k.setAttribute('aria-expanded', 'true'); }
     });
-    if (!ingevuld) {
+    if (!lijst.length) {
       uitslag.innerHTML = '<p class="inline-melding">Vul eerst bij minstens \u00e9\u00e9n vraag een antwoord in.</p>';
       return;
     }
-    var rest = 0;
-    blokken.forEach(function (b) { if (!b.hidden && !b.querySelector('input[type=text]').value.trim()) { rest++; } });
-    uitslag.textContent = goed + ' van de ' + ingevuld + ' ingevulde antwoorden goed' + (rest ? ' (' + rest + ' zonder antwoord overgeslagen)' : '');
+    function tonenAntwoord(it) {
+      if (it.ai || it.klaar) { return it.oordeel === 'goed' || (it.blok._kbPoging || 0) >= 2 || it.oordeel === 'zelf'; }
+      return true;
+    }
+    function weergeven() {
+      lijst.forEach(function (it) {
+        var extra = it.extra;
+        if ((it.ai || it.klaar) && (it.oordeel === 'half' || it.oordeel === 'fout') && !tonenAntwoord(it)) {
+          extra = (extra ? extra + ' ' : '') + 'Pas je antwoord aan en klik opnieuw op Controleer antwoorden, of klik op de vraag voor het juiste antwoord.';
+        }
+        toonOordeel(it.blok, it.oordeel, extra, tonenAntwoord(it));
+      });
+      var n = { goed: 0, half: 0, fout: 0, zelf: 0 };
+      lijst.forEach(function (it) { n[it.oordeel]++; });
+      var rest = 0;
+      blokken.forEach(function (b) { if (!b.hidden && !b.querySelector('input[type=text]').value.trim()) { rest++; } });
+      uitslag.textContent = n.goed + ' van de ' + lijst.length + ' ingevulde antwoorden goed' +
+        (n.half ? ', ' + n.half + ' bijna goed' : '') + (n.zelf ? ', ' + n.zelf + ' om zelf te vergelijken' : '') +
+        (rest ? ' (' + rest + ' zonder antwoord overgeslagen)' : '');
+    }
+    /* Eerst de lokale uitslag: goed/niet goed meteen, de AI-vragen krijgen "Wordt nagekeken" */
+    lijst.forEach(function (it) {
+      if (it.ai) { toonOordeel(it.blok, 'bezig', '', false); } else if (!it.klaar) { toonOordeel(it.blok, it.oordeel, it.extra, true); } else { toonOordeel(it.blok, it.oordeel, it.extra, tonenAntwoord(it)); }
+    });
+    if (!vragenAI.length) { weergeven(); return; }
+
+    bezigMetAI = true;
+    var oudeTekst = origineel.textContent;
+    origineel.disabled = true; zweef.disabled = true;
+    origineel.textContent = 'Bezig met nakijken...'; zweef.textContent = 'Bezig met nakijken...';
+    uitslag.textContent = 'Je antwoorden worden nagekeken. Even geduld.';
+    var verzoek = vragenAI.map(function (it, n) {
+      it.id = 'v' + n;
+      return { id: it.id, question: it.blok.querySelector('button.vraag-knop').textContent.replace(/\s+/g, ' ').trim(),
+               modelAnswer: it.verwacht, studentAnswer: it.tekst, attempt: Math.min((it.blok._kbPoging || 0) + 1, 2) };
+    });
+    var fout = false;
+    var belofte;
+    try { belofte = ai.nakijken(verzoek); } catch (e) { belofte = Promise.reject(e); }
+    Promise.resolve(belofte).then(function (res) {
+      vragenAI.forEach(function (it) {
+        var x = res && res[it.id];
+        if (x && ['goed', 'half', 'fout'].indexOf(x.verdict) !== -1) {
+          it.oordeel = x.verdict; it.extra = typeof x.tip === 'string' ? x.tip.slice(0, 240) : '';
+          it.blok._kbPoging = verzoek[vragenAI.indexOf(it)].attempt;
+          it.blok._kbAI = { tekst: it.tekst, verdict: x.verdict, tip: it.extra };
+        } else {
+          it.oordeel = 'zelf'; it.extra = 'Nakijken met AI lukt nu niet.'; it.ai = true; fout = true;
+        }
+      });
+    }, function () {
+      vragenAI.forEach(function (it) { it.oordeel = 'zelf'; it.extra = 'Nakijken met AI lukt nu niet.'; });
+    }).then(function () {
+      bezigMetAI = false;
+      origineel.disabled = false; zweef.disabled = false;
+      origineel.textContent = oudeTekst; zweef.textContent = oudeTekst;
+      weergeven();
+    });
   });
 
   var zweef = document.createElement('button');
@@ -331,7 +429,10 @@ klaar(function () {
   zweef.setAttribute('aria-label', 'Controleer antwoorden: kijk alleen de ingevulde antwoorden na');
   zweef.addEventListener('click', function () { origineel.click(); });
   document.body.appendChild(zweef);
-  document.body.classList.add('heeft-zweefknop');
+  document.body.classList.add('heeft-zweefknop', 'zweef-hoog');
+  /* Op een smal scherm schuift het toetsenbord over de pagina: tijdens het typen gaat de zwevende knop weg, zodat hij geen invoerveld bedekt */
+  document.addEventListener('focusin', function (e) { if (e.target && e.target.matches && e.target.matches('input[type=text]')) { document.body.classList.add('zweef-typen'); } });
+  document.addEventListener('focusout', function () { document.body.classList.remove('zweef-typen'); });
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (items) { zweef.hidden = items[0].isIntersecting; }).observe(origineel);
   }
