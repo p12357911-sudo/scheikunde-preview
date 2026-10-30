@@ -165,6 +165,7 @@ body.zweef-hoog .zweefknop {
 body.zweef-hoog footer { padding-bottom: 24px; }
 @media (max-width: 600px) {
   /* op een telefoon: kleiner en net boven de onderkant, zodat de invoervelden vrij blijven */
+  body.zweef-typen .zweefknop { display: none; }
   body.zweef-hoog .zweefknop { bottom: 84px; right: 10px; padding: 10px 14px; font-size: 15px; }
 }
 

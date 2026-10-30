@@ -416,6 +416,9 @@ klaar(function () {
   zweef.addEventListener('click', function () { origineel.click(); });
   document.body.appendChild(zweef);
   document.body.classList.add('heeft-zweefknop', 'zweef-hoog');
+  /* Op een smal scherm schuift het toetsenbord over de pagina: tijdens het typen gaat de zwevende knop weg, zodat hij geen invoerveld bedekt */
+  document.addEventListener('focusin', function (e) { if (e.target && e.target.matches && e.target.matches('input[type=text]')) { document.body.classList.add('zweef-typen'); } });
+  document.addEventListener('focusout', function () { document.body.classList.remove('zweef-typen'); });
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (items) { zweef.hidden = items[0].isIntersecting; }).observe(origineel);
   }
