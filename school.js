@@ -177,6 +177,152 @@ klaar(function () {
   maakPaginering(gehusseld, ouder, anker, function (blok) { return blok.querySelector('button.vraag-knop'); });
 });
 
+/* ---------- KB-pagina's: zwevende knop "Controleer antwoorden" ----------
+   Kijkt alleen de ingevulde antwoorden na (lege vragen blijven dicht). Per vraag: goed of niet goed, het juiste antwoord
+   en de uitleg verschijnen onder de vraag. Het vergelijken is ruimhartig: hoofdletters, spaties, komma of punt,
+   een ontbrekende eenheid en schrijfwijzen van machten van 10 maken niet uit. Lange tekstantwoorden worden niet
+   automatisch beoordeeld: daar staat "Vergelijk zelf met het juiste antwoord". */
+var SUPERS = { '\u2070': '0', '\u00b9': '1', '\u00b2': '2', '\u00b3': '3', '\u2074': '4', '\u2075': '5', '\u2076': '6', '\u2077': '7', '\u2078': '8', '\u2079': '9', '\u207b': '-', '\u207a': '+' };
+
+function kbTekstVanAntwoord(box) {
+  var kopie = box.cloneNode(true);
+  Array.prototype.forEach.call(kopie.querySelectorAll('.uitleg, .uitslag'), function (e) { e.parentNode.removeChild(e); });
+  Array.prototype.forEach.call(kopie.querySelectorAll('sup'), function (e) { e.textContent = '^' + e.textContent; });
+  return (kopie.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+function kbNormaal(t) {
+  t = String(t).toLowerCase();
+  t = t.replace(/[\u2070\u00b9\u00b2\u00b3\u2074-\u207b]/g, function (c) { return SUPERS[c] === undefined ? c : (/[0-9]/.test(SUPERS[c]) || SUPERS[c] === '-' || SUPERS[c] === '+' ? SUPERS[c] : c); });
+  t = t.replace(/[\s\u00a0]+/g, '').replace(/[\u2212\u2013\u2014]/g, '-').replace(/,/g, '.').replace(/[\u00b7\u00d7*]/g, 'x');
+  return t;
+}
+
+/* Getal + eenheid: "10.0g", "3.40x10-3mol", "5/6", "25%" */
+function kbGetal(t) {
+  var s = kbNormaal(t).replace(/[\^{}()]/g, '');
+  var m = /^(-?\d+(?:\.\d+)?(?:\/\d+)?(?:x10-?\d+)?)(.*)$/.exec(s);
+  return m ? { getal: m[1], eenheid: m[2].replace(/[^a-z0-9%\/\u00b0]/g, '') } : null;
+}
+
+function kbWaarde(g) {
+  var m = /^(-?\d+(?:\.\d+)?)(?:\/(\d+))?(?:x10(-?\d+))?$/.exec(g);
+  if (!m) { return NaN; }
+  return parseFloat(m[1]) / (m[2] ? parseFloat(m[2]) : 1) * Math.pow(10, m[3] ? parseInt(m[3], 10) : 0);
+}
+
+/* Geeft { oordeel: 'goed' | 'fout' | 'zelf', hint: '' } */
+function kbBeoordeel(ingevuld, verwacht) {
+  var v = kbGetal(verwacht);
+  if (v) {
+    var i = kbGetal(ingevuld);
+    if (i && i.getal === v.getal && (i.eenheid === '' || v.eenheid === '' || i.eenheid === v.eenheid)) { return { oordeel: 'goed', hint: '' }; }
+    var hint = '';
+    if (i && i.getal !== v.getal && Math.abs(kbWaarde(i.getal) - kbWaarde(v.getal)) < 1e-12 * Math.max(1, Math.abs(kbWaarde(v.getal))) && v.getal.indexOf('/') === -1) {
+      hint = 'Let op het aantal decimalen of significante cijfers.';
+    }
+    return { oordeel: 'fout', hint: hint };
+  }
+  var tekst = function (x) { return x.toLowerCase().replace(/[^a-z0-9\u00e0-\u00ff]/g, ''); };
+  var ruw = verwacht.replace(/\^/g, '');
+  var opties = [ruw, ruw.replace(/\([^)]*\)/g, '')].concat(ruw.split(/\s+of\s+|\//));
+  opties = opties.map(tekst).filter(function (o) { return o.length > 0; });
+  if (!opties.length || tekst(ruw).length > 30) { return { oordeel: 'zelf', hint: '' }; }
+  return { oordeel: opties.indexOf(tekst(ingevuld)) !== -1 ? 'goed' : 'fout', hint: '' };
+}
+
+klaar(function () {
+  if (document.querySelector('script[src*="ai-nakijken"]')) { return; }
+  var knoppen = Array.prototype.slice.call(document.querySelectorAll('button.vraag-knop'));
+  var blokken = knoppen.map(function (k) { return k.parentNode; }).filter(function (b) {
+    return b.querySelector('input[type=text]') && b.querySelector('.antwoord-box');
+  });
+  if (!blokken.length) { return; }
+  var ouder = blokken[0].parentNode;
+  var laatste = blokken.filter(function (b) { return b.parentNode === ouder; }).pop();
+  var wrap = laatste.nextElementSibling && laatste.nextElementSibling.classList.contains('meer-vragen') ? laatste.nextElementSibling : laatste;
+  var ref = wrap.nextSibling;
+
+  var onder = document.createElement('div');
+  onder.className = 'kb-controle w3-center';
+  var origineel = document.createElement('button');
+  origineel.type = 'button';
+  origineel.id = 'kb-controleer';
+  origineel.className = 'w3-button knop-blauw';
+  origineel.textContent = 'Controleer antwoorden';
+  var uitslag = document.createElement('div');
+  uitslag.id = 'kb-uitslag';
+  uitslag.setAttribute('role', 'status');
+  uitslag.setAttribute('aria-live', 'polite');
+  onder.appendChild(origineel); onder.appendChild(uitslag);
+  ouder.insertBefore(onder, ref);
+
+  function wis(blok) {
+    var inp = blok.querySelector('input[type=text]');
+    inp.classList.remove('kb-goed', 'kb-fout');
+    inp.removeAttribute('aria-invalid');
+    var oud = blok.querySelector('.kb-oordeel');
+    if (oud) { oud.parentNode.removeChild(oud); }
+  }
+  function sluit(blok) {
+    var box = blok.querySelector('.antwoord-box');
+    box.className = box.className.replace(' w3-show', '');
+    var k = blok.querySelector('button.vraag-knop');
+    if (k) { k.setAttribute('aria-expanded', 'false'); }
+  }
+  blokken.forEach(function (blok) {
+    /* Wijzig je je antwoord, dan verdwijnt de uitslag bij die vraag en gaat het juiste antwoord weer dicht */
+    blok.querySelector('input[type=text]').addEventListener('input', function () { wis(blok); sluit(blok); });
+  });
+
+  origineel.addEventListener('click', function () {
+    var ingevuld = 0, goed = 0, open = 0;
+    blokken.forEach(function (blok) {
+      if (blok.hidden) { return; }
+      var inp = blok.querySelector('input[type=text]');
+      var box = blok.querySelector('.antwoord-box');
+      var tekst = inp.value.replace(/\s+/g, ' ').trim();
+      wis(blok);
+      if (!tekst) { return; }
+      ingevuld++;
+      var r = kbBeoordeel(tekst, kbTekstVanAntwoord(box));
+      if (r.oordeel === 'goed') { goed++; }
+      var el = document.createElement('div');
+      el.className = 'kb-oordeel uitslag ' + (r.oordeel === 'goed' ? 'uitslag-goed' : (r.oordeel === 'fout' ? 'uitslag-fout' : 'uitslag-zelf'));
+      el.textContent = r.oordeel === 'goed' ? '\u2713 Goed' : (r.oordeel === 'fout' ? '\u2717 Niet goed' : 'Vergelijk zelf met het juiste antwoord');
+      if (r.hint) { el.textContent += '. ' + r.hint; }
+      if (r.oordeel !== 'zelf') {
+        inp.classList.add(r.oordeel === 'goed' ? 'kb-goed' : 'kb-fout');
+        if (r.oordeel === 'fout') { inp.setAttribute('aria-invalid', 'true'); }
+      }
+      inp.parentNode.insertBefore(el, box);
+      if (box.className.indexOf('w3-show') === -1) { box.className += ' w3-show'; }
+      var k = blok.querySelector('button.vraag-knop');
+      if (k) { k.setAttribute('aria-expanded', 'true'); }
+    });
+    if (!ingevuld) {
+      uitslag.innerHTML = '<p class="inline-melding">Vul eerst bij minstens \u00e9\u00e9n vraag een antwoord in.</p>';
+      return;
+    }
+    var rest = 0;
+    blokken.forEach(function (b) { if (!b.hidden && !b.querySelector('input[type=text]').value.trim()) { rest++; } });
+    uitslag.textContent = goed + ' van de ' + ingevuld + ' ingevulde antwoorden goed' + (rest ? ' (' + rest + ' zonder antwoord overgeslagen)' : '');
+  });
+
+  var zweef = document.createElement('button');
+  zweef.type = 'button';
+  zweef.id = 'zweefknop';
+  zweef.className = 'zweefknop';
+  zweef.textContent = 'Controleer antwoorden';
+  zweef.setAttribute('aria-label', 'Controleer antwoorden: kijk alleen de ingevulde antwoorden na');
+  zweef.addEventListener('click', function () { origineel.click(); });
+  document.body.appendChild(zweef);
+  document.body.classList.add('heeft-zweefknop');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (items) { zweef.hidden = items[0].isIntersecting; }).observe(origineel);
+  }
+});
+
 /* ---------- Meerkeuzepagina's (MP): willekeurige volgorde, pagina's van 15, nakijken ----------
    De pagina levert alleen de vragen: var myQuestions = [{question, answers:{a:..,b:..}, correctAnswer:'a', fixed:true?}].
    fixed:true = de volgorde van de antwoorden blijft zoals in de lijst (bijv. kleuren). */
@@ -273,3 +419,12 @@ if (window.jQuery) {
     });
   });
 }
+
+/* KB-vragen: elke vraag met eigen invoerveld, antwoord en terugkoppeling in een eigen kader (zie .kb-item in 123school.css) */
+klaar(function () {
+  var knoppen = document.querySelectorAll('button.vraag-knop');
+  for (var i = 0; i < knoppen.length; i++) {
+    var ouder = knoppen[i].parentNode;
+    if (ouder && ouder !== document.body && ouder.tagName === 'DIV') { ouder.classList.add('kb-item'); }
+  }
+});
