@@ -211,6 +211,20 @@ function kbWaarde(g) {
   return parseFloat(m[1]) / (m[2] ? parseFloat(m[2]) : 1) * Math.pow(10, m[3] ? parseInt(m[3], 10) : 0);
 }
 
+/* Antwoordbox met data-goed="39,5 g|40 g": elk van de opties is goed. Zonder data-goed: de tekst van de box. */
+function kbBeoordeelBox(ingevuld, box) {
+  var lijst = box.getAttribute('data-goed');
+  if (!lijst) { return kbBeoordeel(ingevuld, kbTekstVanAntwoord(box)); }
+  var eerste = null;
+  var opties = lijst.split('|');
+  for (var n = 0; n < opties.length; n++) {
+    var r = kbBeoordeel(ingevuld, opties[n]);
+    if (r.oordeel === 'goed') { return r; }
+    if (!eerste) { eerste = r; }
+  }
+  return eerste;
+}
+
 /* Geeft { oordeel: 'goed' | 'fout' | 'zelf', hint: '' } */
 function kbBeoordeel(ingevuld, verwacht) {
   var v = kbGetal(verwacht);
@@ -285,7 +299,7 @@ klaar(function () {
       wis(blok);
       if (!tekst) { return; }
       ingevuld++;
-      var r = kbBeoordeel(tekst, kbTekstVanAntwoord(box));
+      var r = kbBeoordeelBox(tekst, box);
       if (r.oordeel === 'goed') { goed++; }
       var el = document.createElement('div');
       el.className = 'kb-oordeel uitslag ' + (r.oordeel === 'goed' ? 'uitslag-goed' : (r.oordeel === 'fout' ? 'uitslag-fout' : 'uitslag-zelf'));
