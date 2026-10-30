@@ -211,18 +211,83 @@ function kbWaarde(g) {
   return parseFloat(m[1]) / (m[2] ? parseFloat(m[2]) : 1) * Math.pow(10, m[3] ? parseInt(m[3], 10) : 0);
 }
 
-/* Antwoordbox met data-goed="39,5 g|40 g": elk van de opties is goed. Zonder data-goed: de tekst van de box. */
+/* Beoordeelt een antwoord tegen een antwoordbox.
+   1. data-goed="39,5 g|40 g": elk van die opties is goed.
+   2. Zonder data-goed: de hele tekst van de box, en bij een uitgewerkt rekenantwoord ("a x b = c g (d g in 2 significante
+      cijfers)") ook het eindantwoord (na het laatste "=") en de waarden in haakjes. Een leerling die alleen het getal typt is dus goed;
+      het eerste getal van de uitwerking (een tussenstap) niet. Dit gebeurt lokaal, voordat de AI eraan te pas komt. */
 function kbBeoordeelBox(ingevuld, box) {
   var lijst = box.getAttribute('data-goed');
-  if (!lijst) { return kbBeoordeel(ingevuld, kbTekstVanAntwoord(box)); }
-  var eerste = null;
-  var opties = lijst.split('|');
-  for (var n = 0; n < opties.length; n++) {
-    var r = kbBeoordeel(ingevuld, opties[n]);
-    if (r.oordeel === 'goed') { return r; }
-    if (!eerste) { eerste = r; }
+  if (lijst) {
+    var eerste = null;
+    var opties = lijst.split('|');
+    for (var n = 0; n < opties.length; n++) {
+      var r0 = kbBeoordeel(ingevuld, opties[n]);
+      if (r0.oordeel === 'goed') { return r0; }
+      if (!eerste) { eerste = r0; }
+    }
+    return eerste;
   }
-  return eerste;
+  var verwacht = kbTekstVanAntwoord(box);
+  var r = kbBeoordeel(ingevuld, verwacht);
+  if (r.oordeel === 'goed') { return r; }
+  var eind = kbEindantwoorden(verwacht);
+  if (!eind.length) { return r; }
+  var beste = null;
+  for (var k = 0; k < eind.length; k++) {
+    var x = kbVergelijkGetal(ingevuld, kbGetal(eind[k]));
+    if (x.oordeel === 'goed') { return x; }
+    if (x.oordeel === 'half' && !beste) { beste = x; }
+  }
+  if (beste) { return beste; }
+  if (/^\s*(?:[A-Za-z\u0370-\u03ff][A-Za-z0-9_]{0,3}\s*=\s*)?[-\u2212]?\d/.test(ingevuld)) { return { oordeel: 'fout', hint: '', numeriek: true }; }
+  return r;
+}
+
+/* Vergelijkt wat de leerling typte met een verwacht getal v = kbGetal(...): komma of punt, eenheid mag ontbreken,
+   schrijfwijze van machten van 10 maakt niet uit. Zelfde waarde maar andere afronding of eenheid = 'half'. */
+function kbVergelijkGetal(ingevuld, v) {
+  var i = kbGetal(String(ingevuld).replace(/^\s*[A-Za-z\u0370-\u03ff][A-Za-z0-9_]{0,3}\s*=\s*/, ''));
+  if (i && i.getal === v.getal && (i.eenheid === '' || v.eenheid === '' || i.eenheid.replace(/x/g, '') === v.eenheid.replace(/x/g, ''))) { return { oordeel: 'goed', hint: '', numeriek: true }; }
+  if (i && i.getal === v.getal) { return { oordeel: 'half', hint: 'De waarde klopt, controleer de eenheid.', numeriek: true }; }
+  if (i && i.getal !== v.getal && Math.abs(kbWaarde(i.getal) - kbWaarde(v.getal)) < 1e-12 * Math.max(1, Math.abs(kbWaarde(v.getal))) && v.getal.indexOf('/') === -1) {
+    return { oordeel: 'half', hint: 'De waarde klopt, let op het aantal decimalen of significante cijfers.', numeriek: true };
+  }
+  return { oordeel: 'fout', hint: '', numeriek: true };
+}
+
+/* Eindantwoorden uit een uitgewerkt model: "39,5 g" uit "0,79 x 50 = 39,5 g (40 g in 2 significante cijfers)".
+   Geeft de lijst getal-opties: de waarde na het laatste "=" (zonder haakjes) en elke waarde in haakjes die voor
+   "in N significante cijfers" staat. Lege lijst = geen uitgewerkt rekenantwoord (dan geldt de hele tekst). */
+function kbEindantwoorden(verwacht) {
+  var t = String(verwacht);
+  var uit = [];
+  /* Lijstantwoorden als "K = 2, L = 8, M = 7" zijn geen uitgewerkt rekenantwoord */
+  if (/\b[A-Za-z]\s*=\s*[0-9.,]+\s*[,;]\s*[A-Za-z]\s*=/.test(t)) { return uit; }
+  function toevoegen(x) {
+    x = String(x).replace(/[.;:,]+\s*$/, '').trim();
+    var g = kbGetal(x);
+    if (g && g.eenheid.length <= 14 && uit.indexOf(x) === -1) { uit.push(x); }
+  }
+  var haakjes = t.match(/\([^()]*\)/g) || [];
+  haakjes.forEach(function (h) {
+    var m = /^\(\s*([^()]*?)\s+in\s+[0-9]+\s+significant/i.exec(h);
+    if (m) { toevoegen(m[1]); }
+  });
+  /* Haakjes met uitleg weg, maar eenheden als mol/(L·s) blijven staan */
+  var kaal = t.replace(/\([^()]*\)/g, function (h) { return /^\(\s*[A-Za-z\u00b5\u03a9\u00b0]{1,3}\s*[\u00b7\/*\u00d7]\s*[A-Za-z\u00b5\u03a9\u00b0]{1,3}[0-9^]*\s*\)$/.test(h) ? h : ' '; }).replace(/\s+/g, ' ').trim();
+  var p = kaal.lastIndexOf('=');
+  if (p !== -1) {
+    var eind = kaal.slice(p + 1).trim();
+    var d = eind.split(/,?\s+dus\s+/i);   /* "10,8, dus 11 MJ": beide mogen */
+    d.reverse().forEach(toevoegen);
+    /* Antwoord vooraan, uitwerking erachter: "48 s: 50 -> 30 ..., dus 12 s x 4 = 48 s" */
+    if (uit.length) {
+      var v = /^([^:=\s][^:=]{0,24}?):\s+(?=[A-Za-z\u0394\u03a3(])/.exec(kaal);
+      if (v && kbGetal(v[1])) { toevoegen(v[1]); }
+    }
+  }
+  return uit;
 }
 
 /* Geeft { oordeel: 'goed' | 'half' | 'fout' | 'zelf', hint: '', numeriek: true/false }
@@ -235,15 +300,7 @@ function kbIsGetalMetEenheid(verwacht, v) {
 }
 function kbBeoordeel(ingevuld, verwacht) {
   var v = kbGetal(verwacht);
-  if (kbIsGetalMetEenheid(verwacht, v)) {
-    var i = kbGetal(String(ingevuld).replace(/^\s*[A-Za-z\u0370-\u03ff][A-Za-z0-9_]{0,3}\s*=\s*/, ''));
-    if (i && i.getal === v.getal && (i.eenheid === '' || v.eenheid === '' || i.eenheid.replace(/x/g, '') === v.eenheid.replace(/x/g, ''))) { return { oordeel: 'goed', hint: '', numeriek: true }; }
-    if (i && i.getal === v.getal) { return { oordeel: 'half', hint: 'De waarde klopt, controleer de eenheid.', numeriek: true }; }
-    if (i && i.getal !== v.getal && Math.abs(kbWaarde(i.getal) - kbWaarde(v.getal)) < 1e-12 * Math.max(1, Math.abs(kbWaarde(v.getal))) && v.getal.indexOf('/') === -1) {
-      return { oordeel: 'half', hint: 'De waarde klopt, let op het aantal decimalen of significante cijfers.', numeriek: true };
-    }
-    return { oordeel: 'fout', hint: '', numeriek: true };
-  }
+  if (kbIsGetalMetEenheid(verwacht, v)) { return kbVergelijkGetal(ingevuld, v); }
   /* letters, cijfers, Griekse letters en rekentekens tellen mee; spaties en leestekens niet */
   var tekst = function (x) { return kbNormaal(x).replace(/[^a-z0-9\u00e0-\u00ff\u0370-\u03ff=+\-\u2212*:\/\u00d7\u00b7<>%]/g, ''); };
   var ruw = verwacht.replace(/\^/g, '');

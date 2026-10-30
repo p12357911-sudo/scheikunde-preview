@@ -12,13 +12,13 @@
 .fil .fil-nr { font-weight: bold; }
 
 /* ---------- gedeelde vakjes ---------- */
-.fil .fil-cel { position: relative; display: block; flex: 1 1 0; min-width: 0; max-width: 40px; height: 48px; }
+.fil .fil-cel { position: relative; display: block; flex: 1 1 0; min-width: 30px; max-width: 42px; height: 54px; }
 .fil input.fil-vakje {
   display: block;
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 12px 0 0 0;
+  padding: 19px 0 0 0;
   border: 1.3pt solid #003A5C;
   border-radius: 4px;
   background-color: #ffffff;
@@ -36,8 +36,8 @@
 .fil input.fil-vakje.fil-sleutel { background-color: #FFF3C4; }
 .fil input.fil-vakje:focus { outline: 3px solid #FFB300; outline-offset: 1px; position: relative; z-index: 2; }
 .fil .fil-code {
-  position: absolute; top: 2px; right: 3px;
-  font-size: 11px; line-height: 1; color: #111111;
+  position: absolute; top: 1px; right: 3px;
+  font-size: 13.5px; line-height: 1; color: #111111;
   pointer-events: none; z-index: 1;
 }
 .fil .fil-goed input.fil-vakje, .fil input.fil-vakje.fil-vgoed { border-color: #14532d; color: #14532d; }
@@ -60,9 +60,9 @@
 .fil .fil-oplossing { border: 1.3pt solid #003A5C; border-radius: 6px; background-color: #ffffff; padding: 14px; margin: 28px 0 0 0; }
 .fil .fil-opltekst { font-size: 16px; line-height: 1.45; margin: 0 0 12px 0; color: #111111; }
 .fil .fil-oplrij { display: flex; flex-wrap: wrap; gap: 6px 4px; }
-.fil .fil-oplkolom { display: block; flex: 0 1 40px; min-width: 26px; text-align: center; }
+.fil .fil-oplkolom { display: block; flex: 0 1 42px; min-width: 30px; text-align: center; }
 .fil .fil-oplkolom .fil-cel { max-width: none; width: 100%; }
-.fil .fil-oplnr { display: block; margin-top: 3px; font-size: 13px; line-height: 1.2; font-weight: bold; color: #111111; }
+.fil .fil-oplnr { display: block; margin-top: 3px; font-size: 13.5px; line-height: 1.2; font-weight: bold; color: #111111; }
 .fil .fil-oplmelding { margin: 12px 0 0 0; font-size: 16px; color: #111111; }
 
 /* ---------- smal scherm: een kaartje per rij ---------- */
@@ -72,17 +72,17 @@
 .fil .fil-lengte { font-size: 14px; color: #111111; }
 .fil .fil-regel { display: block; }
 .fil .fil-nrvak { display: none; }
-.fil .fil-vakjes { display: flex; gap: 3px; max-width: 100%; }
+.fil .fil-vakjes { display: flex; flex-wrap: wrap; gap: 3px; max-width: 100%; }
 @media (max-width: 600px) {
   .fil .fil-rij { padding: 10px; }
   .fil .fil-vakjes { gap: 2px; }
-  .fil .fil-cel { height: 50px; }
+  .fil .fil-cel { height: 54px; }
   .fil input.fil-vakje { font-size: 18px; }
   .fil .fil-oplossing { padding: 10px; }
 }
 
 /* ---------- breed scherm: het klassieke raster ---------- */
-.fil .fil-raster { --cel: 38px; --hoogte: 42px; --nrbreed: 34px; }
+.fil .fil-raster { --cel: 42px; --hoogte: 46px; --nrbreed: 34px; }
 .fil .fil-raster .fil-clues { display: block; margin: 0 0 22px 0; }
 .fil .fil-raster .fil-clues-lijst { columns: 2 340px; column-gap: 36px; }
 .fil .fil-raster .fil-clue { break-inside: avoid; margin: 0 0 6px 0; font-size: 16px; line-height: 1.4; color: #111111; }
@@ -96,10 +96,10 @@
   background-color: #003A5C; color: #ffffff; font-weight: bold; font-size: 16px;
   line-height: var(--hoogte); text-align: center; border-radius: 3px; margin-right: 2px;
 }
-.fil .fil-raster .fil-vakjes { gap: 0; }
+.fil .fil-raster .fil-vakjes { gap: 0; flex-wrap: nowrap; }
 .fil .fil-raster .fil-cel { flex: 0 0 var(--cel); max-width: none; width: var(--cel); height: var(--hoogte); margin-left: -1.3pt; }
 .fil .fil-raster .fil-cel:first-child { margin-left: 0; }
-.fil .fil-raster input.fil-vakje { border-radius: 0; padding-top: 13px; font-size: 18px; }
+.fil .fil-raster input.fil-vakje { border-radius: 0; padding-top: 17px; font-size: 18px; }
 .fil .fil-raster .fil-melding { margin: 3px 0 8px calc(var(--versch, 0) * (var(--cel) - 1.3pt) + var(--nrbreed) + 2px); font-size: 15px; }
 .fil .fil-raster .fil-goed .fil-nrvak { background-color: #14532d; }
 .fil .fil-raster .fil-fout .fil-nrvak { background-color: #7f1d1d; }

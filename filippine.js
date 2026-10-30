@@ -162,7 +162,7 @@
     /* raster (breed scherm) of kaartjes (smal scherm): het raster krijgt minstens 30 px per vakje */
     function kiesWeergave() {
       var breedte = wortel.clientWidth || wortel.parentNode.clientWidth;
-      var past = (breedte - 44) / kolommen >= 30;
+      var past = (breedte - 44) / kolommen >= 34;
       wortel.classList.toggle('fil-raster', past);
       wortel.classList.toggle('fil-kaarten', !past);
     }
