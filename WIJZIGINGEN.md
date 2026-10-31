@@ -100,7 +100,7 @@ Dit heb ik niet zelf durven veranderen of ik ben er niet zeker van:
 
 **Inhoud**
 - ChemCalc Demo 8 (Rutherford "1 wolk") en Demo 22 ("massagetal" of atoommassa?).
-- Matriaalenstof1KB Demo 22 ("specifieke maximale waarde"); Demo 43 Absorberen of Adsorberen (nog niet aangepast).
+- Matriaalenstof1KB Demo 22 ("specifieke maximale waarde"); Demo 43 Absorberen of Adsorberen (aangepast naar Adsorberen).
 - MolBouw1KB Demo 3 (Li en S in de octetlijst, komma aan het eind); Demo 19 (SO2: "driehoekstructuur" of gebogen?).
 - Uitdeaarde Demo 43 (zink als giftig), Demo 10 (gasolie "300-150"), Demo 23 (onduidelijke zin "iit zout kristelen"), Demo 36 ("patbakjes").
 - Sorteren Demo 7 ("Suspensies hebben altijd een kleur").
