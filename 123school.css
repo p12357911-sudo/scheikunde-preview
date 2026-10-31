@@ -138,7 +138,7 @@ body.heeft-zweefknop footer { padding-bottom: 96px; }
   padding: 12px 20px;
   border: 2px solid #ffffff;
   border-radius: 8px;
-  background-color: #003A5C;
+  background-color: #1565C0;
   color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
@@ -148,7 +148,7 @@ body.heeft-zweefknop footer { padding-bottom: 96px; }
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
   transition: none;
 }
-.zweefknop:hover { background-color: #00527F; }
+.zweefknop:hover, .zweefknop:focus-visible { background-color: #0D47A1; }
 .zweefknop:focus-visible { outline: 3px solid #FFB300; outline-offset: 3px; }
 .zweefknop[hidden] { display: none; }
 @media (max-width: 600px) {
@@ -163,6 +163,18 @@ body.zweef-hoog .zweefknop {
   right: max(24px, env(safe-area-inset-right));
 }
 body.zweef-hoog footer { padding-bottom: 24px; }
+
+/* Controleknoppen (zwevend en vast): helder blauw dat opvalt naast de donkerblauwe koppen. Wit op #1565C0 = 5,75 : 1 (WCAG AA), hover #0D47A1 = 9,7 : 1 */
+#kb-controleer, .w3-button#kb-controleer, #submit, .w3-button#submit {
+  background-color: #1565C0;
+  color: #ffffff;
+  font-weight: bold;
+}
+#kb-controleer:hover, #kb-controleer:focus-visible, #submit:hover, #submit:focus-visible,
+.w3-button#kb-controleer:hover, .w3-button#submit:hover {
+  background-color: #0D47A1 !important;
+  color: #ffffff !important;
+}
 @media (max-width: 600px) {
   /* op een telefoon: kleiner en net boven de onderkant, zodat de invoervelden vrij blijven */
   body.zweef-typen .zweefknop { display: none; }

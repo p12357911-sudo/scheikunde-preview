@@ -571,7 +571,7 @@ klaar(function () {
   zweef.setAttribute('aria-label', 'Controleer nu: kijk je antwoorden na en toon je score');
   zweef.addEventListener('click', function () { origineel.click(); });
   document.body.appendChild(zweef);
-  document.body.classList.add('heeft-zweefknop');
+  document.body.classList.add('heeft-zweefknop', 'zweef-hoog');
 
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (items) {
